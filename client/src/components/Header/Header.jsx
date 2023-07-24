@@ -1,7 +1,12 @@
 import React from "react";
+import Temperature from "./Temperature/Temperature";
 
 const Header = () => {
-  return <div>Header</div>;
+  return (
+    <>
+      <Temperature />
+    </>
+  );
 };
 
 export default Header;
