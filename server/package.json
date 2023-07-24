@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "concurrently \"npm run dev\" \"npm run client\"",
-    "dev": "nodemon index.js",
-    "client": "node start --prefix client/magic-store"
+    "server": "node index.js",
+    "client": "npm start --prefix ../client",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "nodemon index.js"
   },
   "author": "Ismael Godoy",
   "license": "ISC",
