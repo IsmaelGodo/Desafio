@@ -14,7 +14,7 @@ const Temperature = () => {
           );
           const data = await res.json();
           setWeather(data);
-          console.log(data);
+          console.log(weather);
         } catch (error) {
           console.log(error);
         }
@@ -24,7 +24,13 @@ const Temperature = () => {
 
   return (
     <>
-      {weather && <><p>{weather.name}</p><p>{weather.main.temp} ºC</p></>}
+      {weather.name ? (
+        <>
+          <p>{weather.name}</p>
+          <p>{weather.main.temp} ºC</p>
+        </>
+      ):
+      <p>No hay datos de su ciudad</p>}
     </>
   );
 };
