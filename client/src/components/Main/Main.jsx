@@ -1,7 +1,8 @@
 import React from "react";
+import Form from "./Form/Form";
 
 const Main = () => {
-  return <div>Main</div>;
+  return <Form/>;
 };
 
 export default Main;
