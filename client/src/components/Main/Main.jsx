@@ -1,7 +1,10 @@
 import React from "react";
+import Questionnaire from "./Questionnaire/Questionnaire";
 
 const Main = () => {
-  return <div>Main</div>;
+  return (
+    <Questionnaire />
+  );
 };
 
 export default Main;
