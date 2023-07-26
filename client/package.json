@@ -11,9 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "normalize": "^0.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
+    "react-multistep": "^5.5.8",
     "sass": "^1.64.1"
   },
   "devDependencies": {

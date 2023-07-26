@@ -1,10 +1,7 @@
 import React from "react";
-import Questionnaire from "./Questionnaire/Questionnaire";
 
 const Main = () => {
-  return (
-    <Questionnaire />
-  );
+  return <Form/>;
 };
 
 export default Main;
