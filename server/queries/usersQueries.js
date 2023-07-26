@@ -15,7 +15,7 @@ const usersQueries = {
         VALUES ($1, $2, $3, $4);`,
   deleteUser: `
         DELETE FROM users
-        WHERE user_id=1;`,
+        WHERE user_id=$1;`,
 };
 
 module.exports = usersQueries;

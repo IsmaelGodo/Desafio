@@ -1,21 +1,19 @@
-const express = require('express');
+const express = require("express");
+const cors = require("cors");
+const usersRouter = require("./routes/usersRoutes");
 const app = express();
 const port = 4000;
-const cors = require('cors');
-
-const apiRoutes = require('./routes/apiRoutes')
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.get('/', (req, res) =>{
-    res.send('funciona')
-})
-app.use('/api/',apiRoutes);
 
+app.use("/api/users", usersRouter);
 
-const server= app.listen(port, () => {
-    console.log(`Puerto funcionando en el siguiente enlace: http://localhost:${port}`)
-})
+const server = app.listen(port, () => {
+  console.log(
+    `Puerto funcionando en el siguiente enlace: http://localhost:${port}`
+  );
+});
 
 module.exports = server;
