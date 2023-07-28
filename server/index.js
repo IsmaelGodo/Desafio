@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const usersRouter = require("./routes/usersRoutes");
-const authRouter = require("./routes/authRoutes");
+const app = express();
 const port = 4000;
 
 // Initialize express
@@ -14,7 +14,6 @@ app.use(express.json());
 
 // Routes
 app.use("/api/users", usersRouter);
-app.use("/auth", authRouter);
 
 // Assigning port
 const server = app.listen(port, () => {

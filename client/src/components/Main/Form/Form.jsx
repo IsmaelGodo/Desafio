@@ -10,6 +10,13 @@ import Actividad from "../Form/Actividad/Actividad";
 
 
 const Form = () => {
+
+
+
+
+
+
+
   //Logica de cambio de formulario
   const[page, setPage] = useState(0);
   const FormTitles =["Sexo", "Edad", "Altura", "Peso", "Agua", "Historial Medico", "Horas de Sol", "Actividad Física"]
@@ -20,22 +27,47 @@ const Form = () => {
       genero={genero}
       />;
     }else if (page === 1) {
-      return <Edad/>;
+      return <Edad
+      edad={edad}
+      handleEdadChange={handleEdadChange}
+      />;
     }else if (page === 2) {
       return <Altura
       handleAlturaChange={handleAlturaChange}
       altura={altura}
       />;
     }else if (page === 3) {
-      return <Peso/>;
+      return <Peso
+      handlePesoChange={handlePesoChange}
+      peso={peso}
+      />;
     }else if (page === 4) {
-      return <Agua/>;
+      return <Agua
+      cantidadAgua={cantidadAgua}
+      aumentarAgua={aumentarAgua}
+      disminuirAgua={disminuirAgua}
+
+      />;
     }else if (page === 5) {
-      return <Enfermedad/>;
+      return <Enfermedad
+      handleCardioClick={handleCardioClick}
+      handleDigestClick={handleDigestClick}
+      handleLungClick={handleLungClick}
+      handleNeuroClick={handleNeuroClick}
+
+      />;
     }else if (page === 6) {
-      return <Sol/>;
+      return <Sol
+      cantidadSol={cantidadSol}
+      aumentarSol={aumentarSol}
+      disminuirSol={disminuirSol}
+      />;
     }else if (page === 7) {
-      return <Actividad/>;
+      return <Actividad
+      actividad={actividad}
+      handleActividadChange={handleActividadChange}
+
+      />;
     }
     };
     //Cambio  de style para el progressbar
@@ -60,7 +92,11 @@ const Form = () => {
         
       }
     };
-
+  //States Edad:
+  const [edad, setEdad] = useState('0');
+  const handleEdadChange = (event) => {
+    setEdad(event.target.value);
+  };
   //States Altura:
   const [altura, setAltura] = useState(50);
   const handleAlturaChange = (event) => {
@@ -72,7 +108,68 @@ const Form = () => {
     setGenero(event.target.value);
   };
   //States Peso:
-  
+  const [peso, setPeso] = useState(0);
+  const handlePesoChange = (event) => {
+    setPeso(parseInt(event.target.value));
+  };
+  //States Agua:
+  const [cantidadAgua, setCantidadAgua] = useState(0);
+  const aumentarAgua = () => {
+    setCantidadAgua((prevCantidad) => prevCantidad + 1);
+  };
+  const disminuirAgua = () => {
+    setCantidadAgua((prevCantidad) => (prevCantidad > 0 ? prevCantidad - 1 : 0));
+  };
+  //States Enfermeda:
+  const [cardio, setCardio]= useState(false);
+  const [digest, setDigest]= useState(false);
+  const [lung, setLung]= useState(false);
+  const [neuro, setNeuro]= useState(false);
+
+  const handleCardioClick = () => {
+    setCardio(!cardio);
+  };
+  const handleDigestClick = () => {
+    setDigest(!digest);
+  };
+  const handleLungClick = () => {
+    setLung(!lung);
+  };
+  const handleNeuroClick = () => {
+    setNeuro(!neuro);
+  };
+
+//States Sol:
+const [cantidadSol, setCantidadSol] = useState(0);
+
+const aumentarSol = () => {
+  setCantidadSol((prevCantidad) => prevCantidad + 1);
+};
+
+const disminuirSol = () => {
+  setCantidadSol((prevCantidad) => (prevCantidad > 0 ? prevCantidad - 1 : 0));
+};
+//States Actividad: 
+const [actividad, setActividad] = useState("opcion1");
+
+const handleActividadChange = (event) => {
+  setActividad(event.target.value);
+};
+//Objeto Data
+const data = {
+  sex: genero,
+  age: edad,
+  height:altura,
+  weight: peso,
+  water_gl:cantidadAgua,
+  activity: actividad,
+  cardio_dis: cardio,
+  digest_dis: digest,
+  neuro_dis: neuro,
+  lung_dis: lung
+}
+console.log(data);
+
     
   return <div className="form">
     

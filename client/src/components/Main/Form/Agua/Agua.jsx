@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 
-const Agua = () => {
-  const [cantidadAgua, setCantidadAgua] = useState(0);
-
-  const aumentarAgua = () => {
-    setCantidadAgua((prevCantidad) => prevCantidad + 1);
-  };
-
-  const disminuirAgua = () => {
-    setCantidadAgua((prevCantidad) => (prevCantidad > 0 ? prevCantidad - 1 : 0));
-  };
+const Agua = ({disminuirAgua,aumentarAgua, cantidadAgua}) => {
+  
 
   return (
     <div>

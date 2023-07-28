@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 
-const Peso = () => {
-  const [peso, setPeso] = useState(0);
-
-  const handlePesoChange = (event) => {
-    setPeso(parseInt(event.target.value));
-  };
+const Peso = ({peso, handlePesoChange}) => {
+  
 
   return (
     <div>

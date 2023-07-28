@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Form from "./Form/Form";
 import Login from "./Login/Login";
 import Home from "./Home/Home";
+import Form from "./Form/Form"
 
 const Main = () => {
   return (
