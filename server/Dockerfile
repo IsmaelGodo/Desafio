@@ -10,11 +10,6 @@ COPY ./server ./server
 # Instalar las dependencias del servidor
 RUN cd server && npm install
 
-# Definir una variable de entorno para la conexión a PostgreSQL
-ENV PG_USER=
-ENV PG_HOST=
-ENV PG_DATABASE=
-ENV PG_PASSWORD=
 
 # Exponer el puerto 4000 para el servidor Node.js
 EXPOSE 4000
