@@ -21,7 +21,7 @@ steps:
         --region=europe-west1
         --platform=managed
         --allow-unauthenticated
-        --port=5173
+        --port=4000
         --update-env-vars PG_USER=$$PG_USER"
     ]
   secretEnv: [
@@ -31,4 +31,4 @@ availableSecrets:
   secretManager:
     - versionName: projects/795308822384/secrets/PG_USER/versions/latest
       env: PG_USER
-    
+   
