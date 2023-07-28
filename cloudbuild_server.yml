@@ -29,9 +29,9 @@ steps:
         --update-env-vars TOKEN_SECRET=$$TOKEN_SECRET
         --update-env-vars FRONTEND_DOMAIN=$$FRONTEND_DOMAIN"
     ]
-  secretEnv: [
-    'PG_USER', 'PG_HOST', 'PG_DATABASE', 'PG_PASSWORD', 'TOKEN_SECRET', 'FRONTEND_DOMAIN'
-  ]
+    secretEnv: [
+      'PG_USER', 'PG_HOST', 'PG_DATABASE', 'PG_PASSWORD', 'TOKEN_SECRET', 'FRONTEND_DOMAIN'
+    ]
 availableSecrets:
   secretManager:
     - versionName: projects/795308822384/secrets/PG_USER/versions/latest
