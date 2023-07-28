@@ -23,7 +23,7 @@ steps:
         --allow-unauthenticated
         --port=5173
         --update-env-vars PG_USER=$$PG_USER"
-    ]
+      ]
   secretEnv:
     - 'PG_USER'
   availableSecrets:
