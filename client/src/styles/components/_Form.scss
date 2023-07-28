@@ -1,0 +1,73 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.form-container{
+    background-color: rgb(112, 133, 147);
+    height: 450px;
+    width: 650px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-container .footer{
+    margin-top: auto;
+    background-color: rgb(105, 219, 219);
+}
+.progressbar{
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.disease-img{
+    
+    max-width: 100%;
+    height: auto;
+}
+.img-container{
+    
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+.disease{
+    display: flex;
+    flex-wrap: wrap;
+}
+.state-0{
+    @include progress;
+    width: 2%;
+}
+.state-1{
+    @include progress;
+    width: 14.3%;
+}
+.state-2{
+    @include progress;
+    width: 28.6%;
+}
+.state-3{
+    @include progress;
+    width: 42.9%;
+}
+.state-4{
+    @include progress;
+    width: 57.2%;
+}
+.state-5{
+    @include progress;
+    width: 71.5%;
+}
+.state-6{
+    @include progress;
+    width: 85.8%;
+}
+.state-7{
+    @include progress;
+    width: 100%;
+}
