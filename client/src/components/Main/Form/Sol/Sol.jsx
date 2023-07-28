@@ -1,15 +1,7 @@
 import React, {useState} from "react";
 
-const Sol = () => {
-  const [cantidadSol, setCantidadSol] = useState(0);
-
-  const aumentarSol = () => {
-    setCantidadSol((prevCantidad) => prevCantidad + 1);
-  };
-
-  const disminuirSol = () => {
-    setCantidadSol((prevCantidad) => (prevCantidad > 0 ? prevCantidad - 1 : 0));
-  };
+const Sol = ({disminuirSol, aumentarSol, cantidadSol}) => {
+ 
 
   return <div>
   <form>

@@ -1,10 +1,7 @@
 import React, {useState} from "react";
 
-const Edad = () => {
-  const [edad, setEdad] = useState('0');
-  const handleEdadChange = (event) => {
-    setEdad(event.target.value);
-  };
+const Edad = ({handleEdadChange, edad}) => {
+
   
   
 
