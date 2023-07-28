@@ -6,7 +6,7 @@ const tokenSecret = process.env.TOKEN_SECRET;
 
 const getToken = async (req, res) => {
   const { email, password } = req.body;
-    let data, user;
+    let user;
     try {
         user = await users.getUserByEmailAndPassword(email, password);
         // user = await json(data);
