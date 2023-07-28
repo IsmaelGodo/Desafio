@@ -1,7 +1,7 @@
 steps:
   # Configura el entorno
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['config', 'set', 'project', 'Desafio-Tripulaciones']
+    args: ['config', 'set', 'project', 'desafio-tripulaciones']
 
   # Construye la imagen de la aplicación web (etiqueta latest)
   - name: 'gcr.io/cloud-builders/docker'
