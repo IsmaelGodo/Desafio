@@ -14,4 +14,4 @@ RUN npm install
 EXPOSE 4000
 
 # Iniciar el servidor
-CMD ["sh", "-c", "cd server && npm start"]
+CMD ["sh", "-c", "cd server && npm run dev"]
