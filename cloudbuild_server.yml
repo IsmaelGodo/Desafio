@@ -14,7 +14,7 @@ steps:
   # Implementa la imagen en Cloud Run (etiqueta latest)
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
-  - args: [
+    args: [
       "-c",
       "gcloud run deploy tripulaciones-server
         --image=gcr.io/desafio-tripulaciones/tripulaciones-server:latest
