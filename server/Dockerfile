@@ -11,4 +11,4 @@ COPY . .
 RUN npm install
 
 # Iniciar el servidor
-CMD ["sh", "-c", "cd server && npm run dev"]
+CMD ["sh", "-c", "cd server && npm run dev -- --port 4000 --host 0.0.0.0"]
