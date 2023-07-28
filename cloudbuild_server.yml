@@ -14,7 +14,7 @@ steps:
   # Implementa la imagen en Cloud Run (etiqueta latest)
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
-    args: 
+  - args: [
       "-c",
       "gcloud run deploy tripulaciones-server
         --image=gcr.io/desafio-tripulaciones/tripulaciones-server:latest
@@ -28,6 +28,7 @@ steps:
         --update-env-vars PG_PASSWORD=$$PG_PASSWORD
         --update-env-vars TOKEN_SECRET=$$TOKEN_SECRET
         --update-env-vars FRONTEND_DOMAIN=$$FRONTEND_DOMAIN"
+    ]
   secretEnv: [
     'PG_USER', 'PG_HOST', 'PG_DATABASE', 'PG_PASSWORD', 'TOKEN_SECRET', 'FRONTEND_DOMAIN'
   ]
