@@ -5,10 +5,10 @@ FROM node:14
 WORKDIR /app
 
 # Copiar el código del servidor al directorio de trabajo
-COPY . ./server
+COPY . .
 
 # Instalar las dependencias del servidor
 RUN npm install
 
 # Iniciar el servidor
-CMD ["sh", "-c", "cd server && npm start --host 0.0.0.0"]
+CMD ["npm", "run", "server"]
