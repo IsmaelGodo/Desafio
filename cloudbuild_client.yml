@@ -1,0 +1,33 @@
+# Configura el entorno
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['config', 'set', 'project', 'desafio-tripulaciones']
+
+# Construye la imagen de la aplicación web (etiqueta latest)
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/desafio-tripulaciones/tripulaciones-client:latest', './client']
+
+# Sube la imagen al Container Registry (etiqueta latest)
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/desafio-tripulaciones/tripulaciones-client:latest']
+
+# Implementa la imagen en Cloud Run (etiqueta latest)
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: bash
+  args: [
+    "-c",
+    "gcloud run deploy tripulaciones-client
+      --image=gcr.io/desafio-tripulaciones/tripulaciones-client:latest
+      --region=europe-west1
+      --platform=managed
+      --allow-unauthenticated
+      --port=5173
+      --update-env-vars PG_USER=$$PG_USER"
+  ]
+  secretEnv: [
+    'PG_USER'
+  ]
+availableSecrets:
+  secretManager:
+    - versionName: projects/795308822384/secrets/PG_USER/versions/latest
+      env: PG_USER
+    
