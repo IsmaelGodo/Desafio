@@ -13,7 +13,10 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:"http://localhost:4000/"
-      }
+      },
+      "/auth": {
+        target:"http://localhost:4000/"
+      },
     }
   }
 })

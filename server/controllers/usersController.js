@@ -13,9 +13,9 @@ const getUsers = async (req, res) => {
         data = await users.getAllUsers();
         res.status(200).json(data);
       }
-    } catch (err) {
-      console.log(err);
-      throw err;
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
   };
 

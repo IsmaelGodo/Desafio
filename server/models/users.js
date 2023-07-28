@@ -33,6 +33,25 @@ const getUserByEmail = async (email) => {
   return result;
 };
 
+const getUserByEmailAndPassword = async (email, password) => {
+  let client, result;
+  try {
+    client = await pool.connect();
+    const data = await client.query(usersQueries.getUserByEmailAndPassword, [
+      email,
+      password,
+    ]);
+    result = data.rows;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  } finally {
+    client.release();
+  }
+  return result;
+};
+
 const getUserById = async (user_id) => {
   let client, result;
   try {
@@ -72,24 +91,21 @@ const createUser = async (user) => {
   return result;
 };
 
-const deleteUser = async (user_id)=> {
-    let client, result;
-    try {
-        client = await pool.connect();
-        const data = await client.query(
-            usersQueries.deleteUser,
-            [user_id]
-        );
-        result = data.rows;
-        console.log(`User with id ${user_id} deleted`);
-    } catch(err) {
-        console.log(err);
-        throw err;
-    } finally {
-        client.release();
-    }
-    return result;
-}
+const deleteUser = async (user_id) => {
+  let client, result;
+  try {
+    client = await pool.connect();
+    const data = await client.query(usersQueries.deleteUser, [user_id]);
+    result = data.rows;
+    console.log(`User with id ${user_id} deleted`);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  } finally {
+    client.release();
+  }
+  return result;
+};
 
 // const newUser = {
 //     username: "lolo",
@@ -103,9 +119,12 @@ const deleteUser = async (user_id)=> {
 // deleteUser(3);
 
 module.exports = {
-    getAllUsers,
-    getUserByEmail,
-    getUserById,
-    createUser,
-    deleteUser
-}
+  getAllUsers,
+  getUserByEmail,
+  getUserByEmailAndPassword,
+  getUserById,
+  createUser,
+  deleteUser,
+};
+
+getUserByEmailAndPassword("lolo@lolo.com", "lolo@lolo.com");
