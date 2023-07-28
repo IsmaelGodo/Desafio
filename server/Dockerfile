@@ -10,8 +10,5 @@ COPY . .
 # Instalar las dependencias del servidor
 RUN npm install
 
-# Exponer el puerto 4000 para el servidor Node.js
-EXPOSE 4000
-
 # Iniciar el servidor
 CMD ["sh", "-c", "cd server && npm run dev"]
