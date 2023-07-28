@@ -16,19 +16,18 @@ steps:
     entrypoint: bash
     args: [
       "-c",
-      "gcloud run deploy tripulaciones-client
-        --image=gcr.io/desafio-tripulaciones/tripulaciones-client:latest
-        --region=europe-west1
-        --platform=managed
-        --allow-unauthenticated
-        --port=4000
+      "gcloud run deploy tripulaciones-client \
+        --image=gcr.io/desafio-tripulaciones/tripulaciones-client:latest \
+        --region=europe-west1 \
+        --platform=managed \
+        --allow-unauthenticated \
+        --port=5173 \
         --update-env-vars PG_USER=$$PG_USER"
     ]
-  secretEnv: [
-    'PG_USER'
-  ]
+    secretEnv: [
+      'PG_USER'
+    ]
 availableSecrets:
   secretManager:
     - versionName: projects/795308822384/secrets/PG_USER/versions/latest
       env: PG_USER
-   
