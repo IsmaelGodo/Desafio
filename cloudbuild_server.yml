@@ -21,7 +21,7 @@ steps:
         --region=europe-west1
         --platform=managed
         --allow-unauthenticated
-        --port=3000
+        --port=4000
         --update-env-vars PG_USER=$$PG_USER
         --update-env-vars PG_HOST=$$PG_HOST
         --update-env-vars PG_DATABASE=$$PG_DATABASE
