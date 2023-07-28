@@ -23,9 +23,9 @@
       --port=5173
       --update-env-vars PG_USER=$$PG_USER"
   ]
-  secretEnv: [
-    'PG_USER'
-  ]
+    secretEnv: [
+      'PG_USER'
+    ]
 availableSecrets:
   secretManager:
     - versionName: projects/795308822384/secrets/PG_USER/versions/latest
