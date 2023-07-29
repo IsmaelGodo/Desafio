@@ -16,7 +16,7 @@ const getDataform = async (req, res) => {
 const postDataform = async (req, res) => {
 
   const newDataform = req.body; // {user_id, sex, age, height, weight, water_gl, activity, cardio_dis, digest_dis, neuro_dis, lung_dis}
-  const response = await card.createDataform(newDataform);
+  const response = await dataform.createDataform(newDataform);
   res.status(201).json({
       "message": `Creado`
   });
