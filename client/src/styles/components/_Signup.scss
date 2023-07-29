@@ -1,3 +1,11 @@
+#signup-button {
+    background-color: $dark-orange;
+}
+#signup-button:active {
+    color: $dark-orange;
+    background-color: $lighter-orange;
+}
+
 .error-message {
-    color: red;;
+    color: red;
 }

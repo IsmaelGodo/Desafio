@@ -15,6 +15,7 @@ const checkEmailAndPassword = async (req, res, next) => {
 
   if (user) {
     if (user.password === password) {
+      req.user_id = user.user_id;
       req.username = user.username;
       req.email = user.email;
       next();

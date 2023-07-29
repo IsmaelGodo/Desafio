@@ -6,9 +6,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [matchMessage, setMatchMessage] = useState(null);
-  const [signupResponse, setSignupResponse] = useState(null);
   const passRe = /^[\w\-.@]{8,16}$/;
-  // const passRe = new RegExp("^[\w\-.@]{8,16}$");
 
   const {
     register,
@@ -63,7 +61,9 @@ const SignupForm = () => {
     if (data.password === data.re_password) {
       handleSignup();
 
-      navigate("/form");
+      setTimeout(() => {
+        navigate('/home');
+      }, 500);
 
     } else {
       setMatchMessage("The second password doesn't match");
@@ -149,7 +149,7 @@ const SignupForm = () => {
         </p>
         {errors.repeat && <p>{errors.repeat.message}</p>}
 
-        <input type="submit" />
+        <input type="submit" id="signup-button" value="Registro"/>
       </form>
       {message && <p className="error-message">{message}</p>}
       {matchMessage && <p className="error-message">{matchMessage}</p>}

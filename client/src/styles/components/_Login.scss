@@ -3,6 +3,7 @@
 
 .login-section {
     box-sizing: border-box;
+    max-width: 500px;
 }
 
 .logo-article img {
@@ -12,7 +13,7 @@
 .login-form {
     margin-top: 3rem;
     @include flex-column;
-    gap: 0.5rem;
+    gap: 0.2rem;
 }
 
 .login-form > input {
@@ -20,18 +21,32 @@
     width: 100%;
     height: 4rem;
     font-size: 1.2rem;
-    color: $blue-inputs;
-    border: 2px solid $blue-inputs;
+    border: 2px solid $turquoise-blue;
     border-radius: 20px;
+    font-family: 'Verdana';
+}
+.login-form > input:active {
+    border-color:  $turquoise-blue;
+    border-radius: 20px;
+    outline: none;
 }
 
 .login-form > input::placeholder {
-    color: $blue-inputs;
+    color: $light-blue;
 }
 
 .login-form input[type="submit"] {
     height: 4.2rem;
     width: 70%;
+    border: none;
     border-radius: 40px;
-    background-color: inherit;
+    background-color: $dark-blue;
+    color: white;
+    font-weight: 600;
+}
+
+.login-form input[type="submit"]:active {
+    
+    background-color: $light-blue;
+    color: $dark-blue;
 }
