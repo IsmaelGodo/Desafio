@@ -35,17 +35,17 @@ const LoginForm = () => {
 
       <input
           type="email"
-          placeholder="Email"
+          placeholder="Correo electrónico"
           {...register("email", { required: "Required field" })}
         />
         <p className="error-message">{errors.email && errors.email.message}</p>
 
-        <input type="password" placeholder="password" {...register("password", {required: true})} />
+        <input type="password" placeholder="Contraseña" {...register("password", {required: true})} />
         <p className="error-message">
           {errors.password && errors.password.message}
         </p>
 
-        <input type="submit" value='Log In'/>
+        <input type="submit" value='Acceso'/>
       </form>
       {message && <div>{message}</div>}
     </article>

@@ -1,7 +1,7 @@
 const users = require("../models/users");
 
 const checkEmailAndPassword = async (req, res, next) => {
-    console.log('Checking email and password')
+  console.log("Checking email and password");
   const { email, password } = req.body;
   let user;
   try {
@@ -30,6 +30,26 @@ const checkEmailAndPassword = async (req, res, next) => {
   }
 };
 
+const checkUser = async (req, res, next) => {
+  const email = req.body.email;
+  let user;
+  try {
+    [user] = await users.getUserByEmail(email);
+  } catch (error) {
+    res.status(404).json({
+      message: "Error in db",
+    });
+  }
+  if (user) {
+    res.status(401).json({
+      message: "Email already exist",
+    });
+  } else {
+    next();
+  }
+};
+
 module.exports = {
-    checkEmailAndPassword
-}
+  checkEmailAndPassword,
+  checkUser
+};

@@ -1,21 +1,37 @@
 @import '../utils/mixins.scss';
+@import '../utils/variables.scss';
 
 .login-section {
     box-sizing: border-box;
 }
 
+.logo-article img {
+    height: 185px;
+}
+
 .login-form {
-    width: 250px;
+    margin-top: 3rem;
     @include flex-column;
+    gap: 0.5rem;
 }
 
 .login-form > input {
+    text-align: center;
     width: 100%;
-    height: 1.6rem;
+    height: 4rem;
     font-size: 1.2rem;
-    color: rgb(76, 76, 76);
+    color: $blue-inputs;
+    border: 2px solid $blue-inputs;
+    border-radius: 20px;
+}
+
+.login-form > input::placeholder {
+    color: $blue-inputs;
 }
 
 .login-form input[type="submit"] {
-    height: 2rem;
+    height: 4.2rem;
+    width: 70%;
+    border-radius: 40px;
+    background-color: inherit;
 }
