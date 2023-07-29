@@ -4,7 +4,9 @@ import Temperature from "./Temperature/Temperature";
 const Header = () => {
   return (
     <>
-      <Temperature />
+      <header>
+        <Temperature />
+      </header>
     </>
   );
 };

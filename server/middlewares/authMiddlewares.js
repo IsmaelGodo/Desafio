@@ -1,11 +1,12 @@
 const users = require("../models/users");
 
 const checkEmailAndPassword = async (req, res, next) => {
+    console.log('Checking email and password')
   const { email, password } = req.body;
   let user;
   try {
-    user = await users.getUserByEmail(email);
-    console.log("Search email/password result:");
+    [user] = await users.getUserByEmail(email);
+    console.log("getUserByEmail result:");
     console.log(user);
   } catch (error) {
     console.log(error);
@@ -14,10 +15,8 @@ const checkEmailAndPassword = async (req, res, next) => {
 
   if (user) {
     if (user.password === password) {
-      res.status(200).json({
-        message: `Hello ${user.username}, you are logged`,
-      });
       req.username = user.username;
+      req.email = user.email;
       next();
     } else {
       res.status(401).json({
@@ -30,3 +29,7 @@ const checkEmailAndPassword = async (req, res, next) => {
     });
   }
 };
+
+module.exports = {
+    checkEmailAndPassword
+}
