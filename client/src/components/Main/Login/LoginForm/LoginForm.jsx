@@ -28,15 +28,25 @@ const LoginForm = () => {
   console.log(errors);
 
   return (
-    <section className='login-form-section'>
+    <article className='login-form-article'>
       <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
-        <input type="email" placeholder="email" {...register("email", {required: true})} />
-        <input type="password" placeholder="password" {...register("password", {required: true})} />
 
-        <input type="submit" />
+      <input
+          type="email"
+          placeholder="Email"
+          {...register("email", { required: "Required field" })}
+        />
+        <p className="error-message">{errors.email && errors.email.message}</p>
+
+        <input type="password" placeholder="password" {...register("password", {required: true})} />
+        <p className="error-message">
+          {errors.password && errors.password.message}
+        </p>
+
+        <input type="submit" value='Log In'/>
       </form>
       {message && <div>{message}</div>}
-    </section>
+    </article>
   );
 };
 
