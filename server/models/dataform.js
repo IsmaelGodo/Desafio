@@ -21,6 +21,8 @@ const getDataformModel = async (user_id) => {
   const createDataform = async (newDataform) => {
     const { user_id, sex, age, height, weight, water_gl, activity, cardio_dis, digest_dis, neuro_dis, lung_dis } = newDataform;
     let client, result;
+    console.log(newDataform);
+
     try {
         client = await pool.connect(); 
         const data = await client.query(dataformQueries.createDataform,[user_id, sex, age, height, weight, water_gl, activity, cardio_dis, digest_dis, neuro_dis, lung_dis ])
