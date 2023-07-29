@@ -11,4 +11,4 @@ COPY . .
 RUN npm install
 
 # Iniciar el cliente
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
