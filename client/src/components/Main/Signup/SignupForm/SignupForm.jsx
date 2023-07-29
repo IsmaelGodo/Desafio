@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
-
   const [matchMessage, setMatchMessage] = useState(null);
-
+  const [signupResponse, setSignupResponse] = useState(null);
   const passRe = /^[\w\-.@]{8,16}$/;
   // const passRe = new RegExp("^[\w\-.@]{8,16}$");
 
@@ -13,8 +14,8 @@ const SignupForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    validate,
   } = useForm();
+
   const onSubmit = (data) => {
     console.log(data.username);
     const newUser = {
@@ -22,6 +23,27 @@ const SignupForm = () => {
       email: data.email,
       password: data.password,
     };
+
+    const newLogin = {
+      email: data.email,
+      password: data.password,
+    };
+
+    const handleLogin = async () => {
+      try {
+        const res = await fetch(`/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newLogin),
+        });
+        const resData = await res.json();
+        console.log(resData);
+        setMessage(resData.message);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     const handleSignup = async () => {
       try {
         const res = await fetch(`/api/users`, {
@@ -32,6 +54,7 @@ const SignupForm = () => {
         const resData = await res.json();
         console.log(resData);
         setMessage(resData.message);
+        handleLogin();
       } catch (error) {
         console.log(error);
       }
@@ -39,8 +62,11 @@ const SignupForm = () => {
 
     if (data.password === data.re_password) {
       handleSignup();
+
+      navigate("/form");
+
     } else {
-      setMatchMessage("The second password doesn't match")
+      setMatchMessage("The second password doesn't match");
     }
   };
   console.log(errors);
@@ -115,7 +141,7 @@ const SignupForm = () => {
               value: passRe,
               message:
                 "Password should have between 6-12 alphanumeric characters or: / . - _",
-            }
+            },
           })}
         />
         <p className="error-message">

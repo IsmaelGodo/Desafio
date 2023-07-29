@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
 
+  const navigate = useNavigate();
   const [message, setMessage] = useState('');
 
   const { register, handleSubmit, formState: { errors } } = useForm();
