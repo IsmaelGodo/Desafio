@@ -5,21 +5,14 @@ import Altura from "../Form/Altura/Altura";
 import Peso from "../Form/Peso/Peso"
 import Agua from "../Form/Agua/Agua"
 import Enfermedad from "../Form/Enfermedad/Enfermedad";
-import Sol from "../Form/Sol/Sol";
 import Actividad from "../Form/Actividad/Actividad";
 
 
 const Form = () => {
 
-
-
-
-
-
-
   //Logica de cambio de formulario
   const[page, setPage] = useState(0);
-  const FormTitles =["Sexo", "Edad", "Altura", "Peso", "Agua", "Historial Medico", "Horas de Sol", "Actividad Física"]
+  const FormTitles =["Sexo", "Edad", "Altura", "Peso", "Agua", "Historial Medico", "Actividad Física"]
   const PageDisplay = () =>{
     if (page === 0){
       return <Sexo
@@ -57,16 +50,9 @@ const Form = () => {
 
       />;
     }else if (page === 6) {
-      return <Sol
-      cantidadSol={cantidadSol}
-      aumentarSol={aumentarSol}
-      disminuirSol={disminuirSol}
-      />;
-    }else if (page === 7) {
       return <Actividad
       actividad={actividad}
       handleActividadChange={handleActividadChange}
-
       />;
     }
     };
@@ -87,8 +73,7 @@ const Form = () => {
           return 'state-5';
         case 6:
           return 'state-6';
-        case 7:
-          return 'state-7';
+        
         
       }
     };
@@ -139,16 +124,7 @@ const Form = () => {
     setNeuro(!neuro);
   };
 
-//States Sol:
-const [cantidadSol, setCantidadSol] = useState(0);
 
-const aumentarSol = () => {
-  setCantidadSol((prevCantidad) => prevCantidad + 1);
-};
-
-const disminuirSol = () => {
-  setCantidadSol((prevCantidad) => (prevCantidad > 0 ? prevCantidad - 1 : 0));
-};
 //States Actividad: 
 const [actividad, setActividad] = useState("opcion1");
 
@@ -157,6 +133,7 @@ const handleActividadChange = (event) => {
 };
 //Objeto Data
 const data = {
+  user_id: 5,
   sex: genero,
   age: edad,
   height:altura,
