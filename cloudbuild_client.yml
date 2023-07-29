@@ -21,7 +21,7 @@ steps:
         --region=europe-west1 \
         --platform=managed \
         --allow-unauthenticated \
-        --port=$_PORT \
+        --port=5173 \
         --update-env-vars PG_USER=$$PG_USER"
     ]
     secretEnv: [
