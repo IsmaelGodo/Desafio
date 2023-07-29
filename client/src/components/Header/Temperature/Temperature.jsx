@@ -24,13 +24,15 @@ const Temperature = () => {
 
   return (
     <>
-      {weather.name ? (
-        <>
-          <p>{weather.name}</p>
-          <p>{weather.main.temp} ºC</p>
-        </>
-      ):
-      <p>No hay datos de su ciudad</p>}
+      <section className="temperature-section">
+        {weather.name ? (
+          <>
+            <p>{weather.name}</p>
+            <p>{weather.main.temp} ºC</p>
+          </>
+        ):
+        <p>No hay datos de su ciudad</p>}
+      </section>
     </>
   );
 };

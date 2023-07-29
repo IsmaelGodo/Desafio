@@ -1,8 +1,20 @@
-import React from "react";
-import Form from "./Form/Form"
+import { Routes, Route } from 'react-router-dom';
+import Form from "./Form/Form";
+import Login from "./Login/Login";
+import Home from "./Home/Home";
 
 const Main = () => {
-  return <Form/>;
+  return (
+    <>
+      <main>
+        <Routes>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/form' element={<Form />}></Route>
+          <Route path='/home' element={<Home />}></Route>
+        </Routes>
+      </main>
+    </>
+  );
 };
 
 export default Main;

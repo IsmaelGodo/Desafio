@@ -1,0 +1,49 @@
+steps:
+  # Configura el entorno
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['config', 'set', 'project', 'desafio-tripulaciones']
+
+  # Construye la imagen de la aplicación web (etiqueta latest)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/desafio-tripulaciones/tripulaciones-server:latest', './server']
+
+  # Sube la imagen al Container Registry (etiqueta latest)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/desafio-tripulaciones/tripulaciones-server:latest']
+
+  # Implementa la imagen en Cloud Run (etiqueta latest)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: bash
+    args: [
+      "-c",
+      "gcloud run deploy tripulaciones-server
+        --image=gcr.io/desafio-tripulaciones/tripulaciones-server:latest
+        --region=europe-west1
+        --platform=managed
+        --allow-unauthenticated
+        --port=4000
+        --update-env-vars PG_USER=$$PG_USER
+        --update-env-vars PG_HOST=$$PG_HOST
+        --update-env-vars PG_DATABASE=$$PG_DATABASE
+        --update-env-vars PG_PASSWORD=$$PG_PASSWORD
+        --update-env-vars TOKEN_SECRET=$$TOKEN_SECRET
+        --update-env-vars FRONTEND_DOMAIN=$$FRONTEND_DOMAIN"
+    ]
+    secretEnv: [
+      'PG_USER', 'PG_HOST', 'PG_DATABASE', 'PG_PASSWORD', 'TOKEN_SECRET', 'FRONTEND_DOMAIN'
+    ]
+availableSecrets:
+  secretManager:
+    - versionName: projects/795308822384/secrets/PG_USER/versions/latest
+      env: PG_USER
+    - versionName: projects/795308822384/secrets/PG_HOST/versions/latest
+      env: PG_HOST
+    - versionName: projects/795308822384/secrets/PG_DATABASE/versions/latest
+      env: PG_DATABASE
+    - versionName: projects/795308822384/secrets/PG_PASSWORD/versions/latest
+      env: PG_PASSWORD
+    - versionName: projects/795308822384/secrets/TOKEN_SECRET/versions/latest
+      env: TOKEN_SECRET
+    - versionName: projects/795308822384/secrets/FRONTEND_DOMAIN/versions/latest
+      env: FRONTEND_DOMAIN
+

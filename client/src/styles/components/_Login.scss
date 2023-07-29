@@ -1,0 +1,7 @@
+@import '../utils/mixins.scss';
+
+.login-form {
+    @include flex-column;
+    justify-content: space-around;
+    align-items: space-around;
+}
