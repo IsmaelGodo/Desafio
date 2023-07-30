@@ -1,21 +1,20 @@
 import { useContext, useEffect } from "react";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
-import AdviceText from "./AdviceText/AdviceText";
-import AdviceImage from "./AdviceImage/AdviceImage";
-import Footer from "../../Footer/Footer";
+import NavBar from "./NavBar/NavBar";
+import AdviceSlider from "./AdviceSlider/AdviceSlider";
 
 const Home = () => {
   const { userLogged } = useContext(UserLoggedContext);
 
   useEffect(()=>{
-    
+    console.log(userLogged.username);
   }, [userLogged])
 
   return (
     <>
-      <AdviceText />
-      <AdviceImage />
-      <Footer />
+      <span>Hola {userLogged && userLogged.username}</span>
+      <AdviceSlider />
+      <NavBar />
     </>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AuthTest from "./AuthTest";
+import AdviceSlider from "./AdviceSlider";
 
-describe("AuthTest", () => {
+describe("AdviceSlider", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<AuthTest />);
+    const wrapper = shallow(<AdviceSlider />);
     expect(wrapper).toMatchSnapshot();
   });
 });
