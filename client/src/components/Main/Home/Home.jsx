@@ -1,14 +1,23 @@
 import { useContext, useEffect } from "react";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
+import AdviceText from "./AdviceText/AdviceText";
+import AdviceImage from "./AdviceImage/AdviceImage";
+import Footer from "../../Footer/Footer";
 
 const Home = () => {
   const { userLogged } = useContext(UserLoggedContext);
 
   useEffect(()=>{
-    console.log(userLogged.username)
+    
   }, [userLogged])
 
-  return <p>{userLogged && userLogged.user_id}</p>;
+  return (
+    <>
+      <AdviceText />
+      <AdviceImage />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
