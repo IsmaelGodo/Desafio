@@ -6,7 +6,7 @@ const Altura = ({displayedNumberHeight, handleButtonClickHeight, handleClearHeig
 
   return (
     <div>
-      <input type="text" value={displayedNumberHeight} placeholder="cm"/>
+      <input className="input_altura" type="text" value={displayedNumberHeight} placeholder="cm"/>
       <article className="teclado">
         <section>
         <button onClick={() => handleButtonClickHeight('1')}>1</button>
