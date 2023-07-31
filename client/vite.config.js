@@ -12,10 +12,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target:"http://localhost:4000/"
+        target:"https://tripulaciones-server-ese6s67fhq-ew.a.run.app/"
       },
       "/auth": {
-        target:"http://localhost:4000/"
+        target:"https://tripulaciones-server-ese6s67fhq-ew.a.run.app/"
       },
     }
   }
