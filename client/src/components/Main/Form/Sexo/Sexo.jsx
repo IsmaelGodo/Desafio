@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
 const Sexo = ({ handleGeneroChange, genero }) => {
+  
   const [stylemasc, setStylemasc] = useState("regular");
   const [stylefem, setStylefem] = useState("regular");
-
-  
 
   return (
     <section className="body_sex">

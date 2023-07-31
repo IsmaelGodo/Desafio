@@ -1,19 +1,9 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
-.form-container{
-    background-color: rgb(255, 255, 255);
-    border: 3px solid rgb(0, 0, 0);
-    height: 550px;
-    width: 650px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
 .form-container .footer{
+    position: absolute;
+    bottom: 0;
     margin-top: auto;
     background-color: rgb(105, 219, 219);
 }
@@ -75,13 +65,12 @@
     height: 15px;
     border: 3px solid $dark-orange;
     background-color: black;
-
 }
+
 .grid-container{
     display: block;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    
 }
 
 .grid-container h3{
@@ -113,14 +102,10 @@
     &> h3 {
         margin-top: -15px;
         color: $dark-blue;
-
     }
 }
-.body_form{
-    display: flex;
+.body_form-article {
     width: 100%;
-    justify-content: center;
-    align-items: center;
     height: 70%;
-    
+    @include flex-column;
 }
