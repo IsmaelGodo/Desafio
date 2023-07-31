@@ -7,7 +7,7 @@ const Actividad = ({handleActividadChange, actividad}) => {
     <div>
       <form>
         <h3>Actividad: {actividad}</h3>
-
+        <button onClick={() => handleActividadChange('1')}>1</button>
         <input
           type="radio"
           id="opcion1"

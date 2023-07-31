@@ -13,7 +13,7 @@ const Form = () => {
 
   //Logica de cambio de formulario
   const[page, setPage] = useState(0);
-  const FormTitles =["Especidica tu Sexo", "Especidica tu Edad", "Especidica tu Altura", "Especidica tu Peso", "¿Te hidratas?", "¿Qué tipo de enfermedad tienes?", "¿Realizas Actividad Física?", "Bienvenido"]
+  const FormTitles =["Especifica tu Sexo", "Especifica tu Edad", "Especifica tu Altura", "Especifica tu Peso", "¿Te hidratas?", "¿Qué tipo de enfermedad tienes?", "¿Realizas Actividad Física?", "Bienvenido"]
   const PageDisplay = () =>{
     if (page === 0){
       return <Sexo
@@ -24,6 +24,7 @@ const Form = () => {
       return <Edad
       edad={edad}
       handleEdadChange={handleEdadChange}
+      handleClearAge={handleClearAge}
       />;
     }else if (page === 2) {
       return <Altura
@@ -34,6 +35,7 @@ const Form = () => {
     }else if (page === 3) {
       return <Peso
       handlePesoChange={handlePesoChange}
+      handleClearWeight={handleClearWeight}
       peso={peso}
       />;
     }else if (page === 4) {
@@ -62,34 +64,15 @@ const Form = () => {
       />;
     }
     };
-    //Cambio  de style para el progressbar
-    const getClassname = () => {
-      switch (page) {
-        case 0:
-          return 'state-0';
-        case 1:
-          return 'state-1';
-        case 2:
-          return 'state-2';
-        case 3:
-          return 'state-3';
-        case 4:
-          return 'state-4';
-        case 5:
-          return 'state-5';
-        case 6:
-          return 'state-6';
-          case 7:
-          return 'state-7';
-        
-        
-      }
-    };
+    
+    
   //States Edad:
-  const [edad, setEdad] = useState('0');
-  const handleEdadChange = (event) => {
-    setEdad(event.target.value);
+  const [edad, setEdad] = useState('');
+  const handleEdadChange = (number) => {
+    setEdad((prevNumber) => prevNumber + number);
   };
+  const handleClearAge = () => {
+    setEdad('');}
   //States Altura:
   const [displayedNumberHeight, setDisplayedNumberHeight] = useState('');
   const handleButtonClickHeight = (number) => {
@@ -100,14 +83,16 @@ const Form = () => {
   };
   //States Sexo:
   const [genero, setGenero] = useState('');
-  const handleGeneroChange = (event) => {
-    setGenero(event.target.value);
+  const handleGeneroChange = (generoSeleccionado) => {
+    setGenero(generoSeleccionado);
   };
   //States Peso:
-  const [peso, setPeso] = useState(0);
-  const handlePesoChange = (event) => {
-    setPeso(parseInt(event.target.value));
+  const [peso, setPeso] = useState('');
+  const handlePesoChange = (number) => {
+    setPeso((prevNumber) => prevNumber + number);
   };
+  const handleClearWeight = () => {
+    setPeso('');}
   //States Agua:
   const [cantidadAgua, setCantidadAgua] = useState(0);
   const aumentarAgua = () => {
@@ -162,24 +147,35 @@ console.log(dataForm);
   return <div className="form">
     
     <div className="form-container">
-      <div className="header"></div>
+      <div className="header_form"></div>
         <h1>{FormTitles[page]}</h1>
-      <div className="body">{PageDisplay()}</div>
-      <div className="footer">
+      <div className="body_form">{PageDisplay()}</div>
+      <div className="footer_form">
       <div className="progressbar">
-      <div className={getClassname()}></div>;
+      <div className={page === 0 ? "nav_act" : "nav_des"}/>
+      <div className={page === 1 ? "nav_act" : "nav_des"}/>
+      <div className={page === 2 ? "nav_act" : "nav_des"}/>
+      <div className={page === 3 ? "nav_act" : "nav_des"}/>
+      <div className={page === 4 ? "nav_act" : "nav_des"}/>
+      <div className={page === 5 ? "nav_act" : "nav_des"}/>
+      <div className={page === 6 ? "nav_act" : "nav_des"}/>
+      <div className={page === 7 ? "nav_act" : "nav_des"}/>
+
     </div>
+    
       <button
         disabled={page == 0}
        onClick={() => {
         setPage((currPage) => currPage - 1);
         }}
       >Prev</button>
-      <button
-      disabled={page == FormTitles.length -1}
-      onClick={() => {
-        setPage((currPage) => currPage + 1);
-        }}>Next</button>
+      {page === 7 ? (
+        <img src="/Botón-Presionado-Derecha.png" alt="Imagen" />
+      ) : (
+        <button onClick={() => {
+          setPage((currPage) => currPage + 1);
+          }}>Next</button>
+      )}
       </div>
     </div>
 
