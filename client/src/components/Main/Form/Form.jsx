@@ -61,6 +61,7 @@ const Form = () => {
     }else if (page === 7) {
       return <Confirmation
       dataForm={dataForm}
+      submit={submit}
       />;
     }
     };
@@ -127,6 +128,11 @@ const [actividad, setActividad] = useState("opcion1");
 const handleActividadChange = (event) => {
   setActividad(event.target.value);
 };
+//States Confirmacion:
+const [submit, setSubmit] = useState(true)
+const handleSubmitClick = () => {
+  setSubmit(!submit);
+};
 //Objeto Data
 const dataForm = {
   user_id: 5,
@@ -170,7 +176,7 @@ console.log(dataForm);
         }}
       >Prev</button>
       {page === 7 ? (
-        <img src="/Botón-Presionado-Derecha.png" alt="Imagen" />
+        <img src="/Botón-Presionado-Derecha.png" alt="Imagen" onClick={handleSubmitClick} />
       ) : (
         <button onClick={() => {
           setPage((currPage) => currPage + 1);
