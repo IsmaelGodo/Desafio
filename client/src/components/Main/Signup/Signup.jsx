@@ -1,9 +1,8 @@
 import SignupForm from "./SignupForm/SignupForm";
-import { Link } from 'react-router-dom';
-import CuidaTermLogo from '../../../assets/images/cuidaterm-logo.svg';
+import { Link } from "react-router-dom";
+import CuidaTermLogo from "../../../assets/images/cuidaterm-logo.svg";
 
 const Signup = () => {
-  
   return (
     <section className="login-section">
       <article className="logo-article">
@@ -11,7 +10,7 @@ const Signup = () => {
       </article>
       <SignupForm />
       <article className="">
-        <Link to='/login' >Back to Login</Link>
+        <Link to="/">Back to Login</Link>
       </article>
     </section>
   );

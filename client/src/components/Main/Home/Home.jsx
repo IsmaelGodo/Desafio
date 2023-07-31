@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <span>Hola {userLogged && userLogged.username}</span>
+      {/* <span>Hola {userLogged && userLogged.username}</span> */}
       <AdviceSlider />
       <NavBar />
     </>
