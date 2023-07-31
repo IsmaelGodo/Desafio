@@ -7,6 +7,7 @@ import Agua from "../Form/Agua/Agua";
 import Enfermedad from "../Form/Enfermedad/Enfermedad";
 import Actividad from "../Form/Actividad/Actividad";
 import Confirmation from "../Form/Confirmation/Confirmation";
+import FooterForm from "./FooterForm/FooterForm";
 
 const Form = () => {
   //Logica de cambio de formulario
@@ -159,46 +160,15 @@ const Form = () => {
 
   return (
     <>
-      <article className="header_form-article">
+      <section className="header_form-section">
         <h1>{FormTitles[page]}</h1>
-      </article>
+      </section>
 
-      <article className="body_form-article">
+      <section className="body-form-section">
         {PageDisplay()}
-      </article>
+      </section>
 
-      <div className="footer_form">
-        <div className="progressbar">
-          <div className={page === 0 ? "nav_act" : "nav_des"} />
-          <div className={page === 1 ? "nav_act" : "nav_des"} />
-          <div className={page === 2 ? "nav_act" : "nav_des"} />
-          <div className={page === 3 ? "nav_act" : "nav_des"} />
-          <div className={page === 4 ? "nav_act" : "nav_des"} />
-          <div className={page === 5 ? "nav_act" : "nav_des"} />
-          <div className={page === 6 ? "nav_act" : "nav_des"} />
-          <div className={page === 7 ? "nav_act" : "nav_des"} />
-        </div>
-
-        <button
-          disabled={page == 0}
-          onClick={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        >
-          Prev
-        </button>
-        {page === 7 ? (
-          <img src="/Botón-Presionado-Derecha.png" alt="Imagen" />
-        ) : (
-          <button
-            onClick={() => {
-              setPage((currPage) => currPage + 1);
-            }}
-          >
-            Next
-          </button>
-        )}
-      </div>
+      <FooterForm page={page} setPage={setPage}/>
     </>
   );
 };

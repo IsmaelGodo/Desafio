@@ -6,7 +6,7 @@ const Edad = ({handleEdadChange,handleClearAge, edad}) => {
   
 
   return <div>
-    <input className="input_altura" type="text" value={edad} placeholder="años"/>
+    <input className="input_form" type="text" value={edad} placeholder="años"/>
   <article className="teclado">
     <section>
     <button onClick={() => handleEdadChange('1')}>1</button>

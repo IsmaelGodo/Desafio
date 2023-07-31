@@ -38,6 +38,7 @@ CREATE TABLE data (
 	digest_dis boolean, 
 	neuro_dis boolean,
 	lung_dis boolean,
+	response text,
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 	ON DELETE CASCADE
 );

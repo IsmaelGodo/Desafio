@@ -1,4 +1,8 @@
+const jwt = require("jsonwebtoken");
 const users = require("../models/users");
+require("dotenv").config();
+
+const tokenSecret = process.env.TOKEN_SECRET;
 
 const checkEmailAndPassword = async (req, res, next) => {
   console.log("Checking email and password");
@@ -50,7 +54,33 @@ const checkUser = async (req, res, next) => {
   }
 };
 
+const checkToken = async (req, res, next) => {
+  const token = req.cookies["access-token"];
+
+  console.log("Taking token from cookie");
+  console.log(token);
+
+  if (token) {
+    jwt.verify(token, tokenSecret, (error, user) => {
+      if (error) {
+        res.sendStatus(403).json({
+          message: "Wrong token",
+          user: user,
+        });
+      } else {
+        req.user = user;
+        next();
+      }
+    });
+  } else {
+    res.sendStatus(401).json({
+      message: "Token not provided",
+    });
+  }
+};
+
 module.exports = {
   checkEmailAndPassword,
-  checkUser
+  checkUser,
+  checkToken
 };
