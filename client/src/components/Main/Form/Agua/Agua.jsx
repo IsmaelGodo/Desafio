@@ -1,23 +1,31 @@
 import React, { useState } from "react";
+import GlassImg from "../../../../assets/images/Imagen-Vaso-Margenes.svg";
 
-const Agua = ({disminuirAgua,aumentarAgua, cantidadAgua}) => {
-  
-
+const Agua = ({ disminuirAgua, aumentarAgua, cantidadAgua }) => {
   return (
-    <div>
-      <form>
-        <label>
-          Vasos de agua diarios: {cantidadAgua} 
-        </label>
-        <br />
-        <button type="button" onClick={disminuirAgua}>
+    <>
+      <article>
+        <input
+            className="input_form"
+            type="text"
+            value={cantidadAgua}
+            placeholder="kg"
+          />
+      </article>
+
+      <article>
+        <img src={GlassImg} alt="" />
+      </article>
+        
+      <article>
+        <button className="more-water-button" type="button" onClick={disminuirAgua}>
           -
         </button>
-        <button type="button" onClick={aumentarAgua}>
+        <button className="less-water-button" type="button" onClick={aumentarAgua}>
           +
         </button>
-      </form>
-    </div>
+      </article>
+    </>
   );
 };
 

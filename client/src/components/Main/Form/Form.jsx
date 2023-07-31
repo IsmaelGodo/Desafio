@@ -13,15 +13,25 @@ const Form = () => {
   //Logica de cambio de formulario
   const [page, setPage] = useState(0);
   const FormTitles = [
-    "Especifica tu Sexo",
-    "Especifica tu Edad",
-    "Especifica tu Altura",
-    "Especifica tu Peso",
+    "Especifica tu sexo",
+    "Especifica tu edad",
+    "Especifica tu altura",
+    "Especifica tu peso",
     "¿Te hidratas?",
     "¿Qué tipo de enfermedad tienes?",
-    "¿Realizas Actividad Física?",
+    "¿Realizas actividad física?",
     "Bienvenido",
   ];
+  const FormSubtitles = [
+    "Tus hormonas pueden afectar al cálculo",
+    "La edad es importante a la hora de medir la vulnerabilidad",
+    "El peso influye en tu capacidad de regular la temperatura corporal",
+    "La altura influye en el calor corporal",
+    "Añade la cantidad aproximada de vasos de agua que bebes al día",
+    "En el caso de no tener ninguna de estas pasa a la siguiente",
+    "La actividad física influye en la temperatura corporal",
+    "Revisa que tus datos son los correctos"
+  ]
   const PageDisplay = () => {
     if (page === 0) {
       return <Sexo handleGeneroChange={handleGeneroChange} genero={genero} />;
@@ -162,6 +172,7 @@ const Form = () => {
     <>
       <section className="header_form-section">
         <h1>{FormTitles[page]}</h1>
+        <h2 >{FormSubtitles[page]}</h2>
       </section>
 
       <section className="body-form-section">

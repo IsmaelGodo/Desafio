@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 const Sexo = ({ handleGeneroChange, genero }) => {
-  
   const [stylemasc, setStylemasc] = useState("regular");
   const [stylefem, setStylefem] = useState("regular");
 
   return (
-    <section className="body_sex">
+    <>
       <article
         className={`img_genero_${stylemasc}`}
         onClick={() => {
@@ -18,6 +17,7 @@ const Sexo = ({ handleGeneroChange, genero }) => {
         <img src="/Emojy-Hombre.png" alt="Masculino" />
         <h3>Masculino</h3>
       </article>
+      
       <article
         className={`img_genero_${stylefem}`}
         onClick={() => {
@@ -29,7 +29,7 @@ const Sexo = ({ handleGeneroChange, genero }) => {
         <img src="/Emojy-Mujer.png" alt="Femenino" />
         <h3>Femenino</h3>
       </article>
-    </section>
+    </>
   );
 };
 

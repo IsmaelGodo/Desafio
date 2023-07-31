@@ -1,6 +1,20 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
+.header_form-section h1 {
+    color: $turquoise-blue;
+    font-size: 2.1rem;
+    margin-top: 5rem;
+    margin-bottom: 0;
+}
+
+.header_form-section h2 {
+    margin: 0.5rem;
+    color: $turquoise-blue;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
 .body-form-section {
     width: 100%;
     height: 70%;
@@ -9,9 +23,11 @@
 
 // Sex
 
-.img_genero_regular{
-    border: 3px solid $dark-blue;
-    width: 100%;
+.img_genero_regular, .img_genero_selected {
+    @include flex-column;
+    border: 5px solid $dark-blue;
+    width: 10rem;
+    height: 10rem;
     margin-bottom: 5%;
     border-radius: 15px;
 
@@ -24,19 +40,12 @@
     }
 }
 
-.img_genero_selected{
-    border: 3px solid $dark-orange;
-    width: 100%;
-    margin-bottom: 5%;
-    border-radius: 15px;
+.img_genero_selected {
+    border-color: $dark-orange;
+}
 
-    &> img {
-        width: 100px;
-    }
-    &> h3 {
-        margin-top: -15px;
-        color: $dark-blue;
-    }
+.img_genero_regular img, .img_genero_selected img {
+    width: 80%;
 }
 
 // Age / Height / Weight
@@ -44,23 +53,70 @@
 .input_form {
     border: 3px solid $dark-blue;
     border-radius: 25px;
-    width: 150px;
-    height: 30px;
-    font-size: 25px;
+    width: 60%;
+    max-width: 300px;
+    height: 4rem;
+    font-size: 3rem;
     text-align: right;
     padding-right: 5px;
+    color: $turquoise-fade-blue;
+}
+
+.input_form::placeholder {
     color: $dark-blue;
+}
+
+.teclado {
+    margin-top: 1rem;
+}
+
+.teclado-row {
+    @include flex-row;
 }
 
 .teclado button {
     border: 3px solid $dark-blue;
     border-radius: 50px;
-    margin: 5px;
-    width: 3.6rem;
-    height: 3.5rem;
+    margin: 0.8rem;
+    padding: 0;
+    width: 3.8rem;
+    height: 3.8rem;
+    font-family: inherit;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: $turquoise-blue;
+    background-color: white;
+}
+
+.fake-button {
+    visibility:hidden;
+}
+
+#reset-button {
+    border: none;
+}
+
+#reset-button img {
+    width: 3.8rem;
 }
 
 // Water
+
+.more-water-button, .less-water-button {
+    margin: 0 0.2rem;
+    font-size: 2rem;
+    line-height: 0.3rem;
+    color: white;
+    background-color: $dark-blue;
+}
+
+.more-water-button {
+    border-radius: 30px 4px 4px 30px;
+}
+
+.less-water-button {
+    border-radius: 4px 30px 30px 4px;
+}
 
 // Disease
 
@@ -69,21 +125,46 @@
     flex-wrap: wrap;
 }
 
+.img-container-regular, .img-container-selected {
+    width: 130px;
+    height: 130px;
+    margin: 10px;
+    color: $turquoise-blue;
+    font-weight: 600;
+    background-color: white;
+    border: 2px solid $turquoise-blue;
+    border-radius: 20px;
+}
+
+.img-container-selected {
+    border: 3px solid $dark-orange;
+}
+
 .disease-img{
-    max-width: 100%;
+    margin-top: -0.2rem;
+    margin-bottom: -1.2rem;
+    max-width: 90%;
     height: auto;
 }
 
-.img-container{
-    
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
+// Activity
+
+.activity-input {
+    visibility: hidden;
 }
 
-// Activity
+.activity-label {
+    @include flex-row;
+    border: 3px solid $turquoise-blue;
+    border-radius: 25px;
+    width: 85%;
+    max-width: 400px;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: right;
+    color: $turquoise-blue;
+}
 
 // Result
 
@@ -106,20 +187,36 @@
 }
 
 .progressbar{
-    display: flex;
     width: 100%;
     height: 5px;
-    flex-direction: row;
+    @include flex-row;
 }
 
 .nav_act, .nav_des {
     width: 15px;
     height: 15px;
-    border: 2px solid $turquoise-blue;
+    border: 1px solid $turquoise-blue;
     border-radius: 15px;
     margin-left: 5px;
 }
 
 .nav_act {
     background-color: $dark-blue;
+}
+
+.button-form {
+    margin: 0 0.1rem;
+    width: 40%;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+}
+
+.button-form:focus {
+    border: none;
+    // background-color: black;
+}
+
+.button-form img {
+    width: 100%;
 }
