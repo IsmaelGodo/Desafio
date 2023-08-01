@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import Main from "./components/Main/Main";
 import { UserLoggedContext } from "./context/userLoggedContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [userLogged, setUserLogged] = useState({});
