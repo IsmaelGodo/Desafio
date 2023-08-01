@@ -36,6 +36,8 @@ const FooterForm = ({ page, setPage, dataForm }) => {
       setLog(data);
       console.log("Buscando usuario");
       console.log(log);
+      console.log("data en Fetchdata");
+      console.log(data);
     } catch (error) {
       console.log("Error:", error);
     }

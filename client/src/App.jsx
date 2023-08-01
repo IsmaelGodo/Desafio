@@ -9,9 +9,6 @@ function App() {
 
   const updateUserLogged = (user) => {
     setUserLogged(user);
-    console.log("updateUserLogged");
-    console.log(userLogged);
-    console.log(user);
   };
 
   const userLoggedData = {
