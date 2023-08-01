@@ -1,0 +1,12 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 40%;
+    height: 20px;
+    background-color: $turquoise-blue;
+    border-radius: 35px;
+}

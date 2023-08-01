@@ -1,6 +1,47 @@
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 
 
-const FooterForm = ({page, setPage}) => {
+const FooterForm = ({page, setPage, dataForm}) => {
+const [log, setLog] = useState('');
+const [method, setMethod] = useState('post');
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
+    );
+    const data = response.data;
+    setLog(data);
+    console.log(log);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+};
+
+const handleSubmitClick = async () => {
+  if (Object.values(dataForm).some(value => value === "")) {
+    alert("Todos los campos deben ser completados");
+    return; 
+  }
+  await fetchData(); 
+
+  try {
+    if (log.length > 0) {
+      setMethod("put");
+    }
+
+    const response = await axios[method](
+      "http://localhost:4000/api/dataform",
+      dataForm
+    );
+    console.log("Respuesta del servidor:", response.data);
+  } catch (error) {
+    console.log("Error al enviar los datos:", error);
+  }
+};
+  
+
 
 
 
@@ -28,7 +69,7 @@ const FooterForm = ({page, setPage}) => {
           Prev
         </button>
         {page === 7 ? (
-          <img src="/Botón-Presionado-Derecha.png" alt="Imagen" />
+          <img src="/Botón-Confirmación.png" alt="Imagen" onClick={handleSubmitClick} />
         ) : (
           <button
             onClick={() => {
