@@ -1,5 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,11 +10,14 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:4000",
+        target: process.env.VITE_SERVER_PROXY,
       },
       "/auth": {
-        target: "http://localhost:4000",
+        target: process.env.VITE_SERVER_PROXY,
       },
     },
-  },
+  },  
+  define: {
+    'process.env': process.env
+  }
 });

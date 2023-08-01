@@ -3,13 +3,13 @@ import Form from "./Form/Form";
 import Login from "./Login/Login";
 import Home from "./Home/Home";
 import Signup from "./Signup/Signup";
-import FakeAuth from "./FakeAuth/FakeAuth";
 import Perfil from "./Perfil/Perfil";
 import Diagnostic from "./Diagnostic/Diagnostic";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 const Main = () => {
+  
   const [userLogged, setUserLogged] = useState(null);
 
   useEffect(() => {

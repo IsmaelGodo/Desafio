@@ -7,6 +7,7 @@ import RightArrow2 from "../../../../assets/icons/Flecha-Derecha-Presionado.svg"
 import DisableArrow from "../../../../assets/icons/Flecha-Izquierda-Desactivado.svg";
 
 const FooterForm = ({ page, setPage, dataForm }) => {
+  
   const [log, setLog] = useState([]);
   const [Hovered, setHovered] = useState(false);//Boton1
   const [Hovered2, setHovered2] = useState(false);//Boton2
