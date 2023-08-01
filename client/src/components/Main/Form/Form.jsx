@@ -147,14 +147,14 @@ const Form = () => {
   };
 
   //States Actividad:
-  const [actividad, setActividad] = useState("opcion1");
+  const [actividad, setActividad] = useState("");
 
   const handleActividadChange = (event) => {
     setActividad(event.target.value);
   };
   //Objeto Data
   const dataForm = {
-    user_id: 8,
+    user_id: 2,
     sex: genero,
     age: edad,
     height: displayedNumberHeight,

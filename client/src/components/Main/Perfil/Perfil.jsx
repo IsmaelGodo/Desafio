@@ -22,6 +22,8 @@ const Diagnostico = () => {
   //   }
   // };fetchData();
 //}, []);
+
+
   //Objeto de prueba
   const dataMentira = {
     sex: "Masculino",
