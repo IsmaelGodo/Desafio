@@ -134,6 +134,7 @@
     background-color: white;
     border: 2px solid $turquoise-blue;
     border-radius: 20px;
+    box-sizing: border-box;
 }
 
 .img-container-selected {
@@ -159,11 +160,17 @@
     border-radius: 25px;
     width: 85%;
     max-width: 400px;
-    height: 3.5rem;
+    height: 3.8rem;
+    margin: 0.2rem 0;
     font-size: 1.5rem;
     font-weight: 600;
     text-align: right;
     color: $turquoise-blue;
+    box-sizing: border-box;
+}
+
+.activity-input:checked + label {
+    border: 4px solid $dark-orange;
 }
 
 // Result

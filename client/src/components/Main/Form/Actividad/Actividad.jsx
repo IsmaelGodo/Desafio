@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Actividad = ({ handleActividadChange, actividad }) => {
+  
   return (
     <>
       {/* <button onClick={() => handleActividadChange("1")}>1</button> */}
@@ -9,8 +10,8 @@ const Actividad = ({ handleActividadChange, actividad }) => {
         type="radio"
         id="opcion1"
         name="actividad"
-        value="opcion1"
-        checked={actividad === "opcion1"}
+        value="Solo salgo a pasear"
+        checked={actividad === "Solo salgo a pasear"}
         onChange={handleActividadChange}
       />
       <label className={`activity-label`} htmlFor="opcion1">
@@ -22,8 +23,8 @@ const Actividad = ({ handleActividadChange, actividad }) => {
         type="radio"
         id="opcion2"
         name="actividad"
-        value="opcion2"
-        checked={actividad === "opcion2"}
+        value="Cada ciertas horas"
+        checked={actividad === "Cada ciertas horas"}
         onChange={handleActividadChange}
       />
       <label className={`activity-label`} htmlFor="opcion2">
@@ -35,8 +36,8 @@ const Actividad = ({ handleActividadChange, actividad }) => {
         type="radio"
         id="opcion3"
         name="actividad"
-        value="opcion3"
-        checked={actividad === "opcion3"}
+        value="Con frecuencia"
+        checked={actividad === "Con frecuencia"}
         onChange={handleActividadChange}
       />
       <label className={`activity-label`} htmlFor="opcion3">
@@ -48,8 +49,8 @@ const Actividad = ({ handleActividadChange, actividad }) => {
         type="radio"
         id="opcion4"
         name="actividad"
-        value="opcion4"
-        checked={actividad === "opcion4"}
+        value="Muy a menudo"
+        checked={actividad === "Muy a menudo"}
         onChange={handleActividadChange}
       />
       <label className={`activity-label`} htmlFor="opcion4">
