@@ -154,7 +154,7 @@ const Form = () => {
   };
   //Objeto Data
   const dataForm = {
-    user_id: 2,
+    user_id: 9,
     sex: genero,
     age: edad,
     height: displayedNumberHeight,

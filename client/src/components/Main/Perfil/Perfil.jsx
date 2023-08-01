@@ -4,7 +4,7 @@ import NavBar from "../Home/NavBar/NavBar";
 
 
 
-const Diagnostico = () => {
+const Perfil = () => {
 
   const [diagData, setDiagData] = useState([]);
 
@@ -26,6 +26,7 @@ const Diagnostico = () => {
 
   //Objeto de prueba
   const dataMentira = {
+    name: "Federico",
     sex: "Masculino",
     age: "33",
     height: "180",
@@ -41,8 +42,8 @@ const Diagnostico = () => {
 
   return(
     <>
-      <section className="header_form-section">
-        <h1></h1>
+      <section className="header_perfil-section">
+        <h1>{dataMentira.name}</h1>
       </section>
 
       <section className="body-form-section">
@@ -88,4 +89,4 @@ const Diagnostico = () => {
   );
 };
 
-export default Diagnostico;
+export default Perfil;

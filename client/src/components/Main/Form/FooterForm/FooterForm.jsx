@@ -26,6 +26,7 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     setHovered2(false);
   };
 
+  useEffect(() => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -38,7 +39,13 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     } catch (error) {
       console.log("Error:", error);
     }
-  };
+  };fetchData()
+}, []);
+
+useEffect(() => {
+  console.log(log);
+}, [log]);
+
 
   const handleSubmitClick = async () => {
     if (Object.values(dataForm).some((value) => value === "")) {
@@ -47,7 +54,7 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     }
   
     try {
-      await fetchData();
+      
   
       if (log.length > 0) {
         const response = await axios.put(
