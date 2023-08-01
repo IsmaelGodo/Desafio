@@ -15,7 +15,7 @@ const getToken = async (req, res) => {
       // httpOnly: true,
       samesite: "lax",
     })
-    .cookie("user-logged", req.email, {
+    .cookie("user-logged", req.user_id, {
       // httpOnly: true,
       samesite: "lax",
     })

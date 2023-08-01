@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Sexo from "../Form/Sexo/Sexo";
 import Edad from "../Form/Edad/Edad";
 import Altura from "../Form/Altura/Altura";
@@ -8,8 +8,22 @@ import Enfermedad from "../Form/Enfermedad/Enfermedad";
 import Actividad from "../Form/Actividad/Actividad";
 import Confirmation from "../Form/Confirmation/Confirmation";
 import FooterForm from "./FooterForm/FooterForm";
+import { UserLoggedContext } from "../../../context/userLoggedContext";
+import Cookies from "js-cookie";
 
 const Form = () => {
+
+  const [userLogged, setUserLogged] = useState(null);
+
+  // Getting user_id from cookie and 
+  useEffect(() => {
+    const user_id = Cookies.get("user-logged");
+    setUserLogged(user_id);
+    console.log(userLogged);
+  });
+
+  // console.log(userLogged);
+
   //Logica de cambio de formulario
   const [page, setPage] = useState(0);
   const FormTitles = [
@@ -30,8 +44,8 @@ const Form = () => {
     "Añade la cantidad aproximada de vasos de agua que bebes al día",
     "En el caso de no tener ninguna de estas pasa a la siguiente",
     "La actividad física influye en la temperatura corporal",
-    "Revisa que tus datos son los correctos"
-  ]
+    "Revisa que tus datos son los correctos",
+  ];
   const PageDisplay = () => {
     if (page === 0) {
       return <Sexo handleGeneroChange={handleGeneroChange} genero={genero} />;
@@ -154,7 +168,7 @@ const Form = () => {
   };
   //Objeto Data
   const dataForm = {
-    user_id: 8,
+    user_id: userLogged,
     sex: genero,
     age: edad,
     height: displayedNumberHeight,
@@ -172,14 +186,12 @@ const Form = () => {
     <>
       <section className="header_form-section">
         <h1>{FormTitles[page]}</h1>
-        <h2 >{FormSubtitles[page]}</h2>
+        <h2>{FormSubtitles[page]}</h2>
       </section>
 
-      <section className="body-form-section">
-        {PageDisplay()}
-      </section>
+      <section className="body-form-section">{PageDisplay()}</section>
 
-      <FooterForm page={page} setPage={setPage} dataForm={dataForm}/>
+      <FooterForm page={page} setPage={setPage} dataForm={dataForm} />
     </>
   );
 };

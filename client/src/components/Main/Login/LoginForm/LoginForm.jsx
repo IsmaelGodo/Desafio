@@ -41,7 +41,7 @@ const LoginForm = () => {
     };
     handleLogin();
     setTimeout(() => {
-      navigate('/home');
+      navigate('/form');
     }, 1000);
   };
   // console.log(errors);

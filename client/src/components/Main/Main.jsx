@@ -16,7 +16,7 @@ const Main = () => {
           <Route path='/form' element={<Form />}></Route>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/fakeauth' element={<FakeAuth />}></Route>
-          <Route path='/diagnostico' element={<Diagnostico />}></Route>
+          <Route path='/diagnostic' element={<Diagnostico />}></Route>
         </Routes>
       </main>
     </>
