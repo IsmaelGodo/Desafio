@@ -7,10 +7,9 @@ import RightArrow2 from "../../../../assets/icons/Flecha-Derecha-Presionado.svg"
 import DisableArrow from "../../../../assets/icons/Flecha-Izquierda-Desactivado.svg";
 
 const FooterForm = ({ page, setPage, dataForm }) => {
-  
   const [log, setLog] = useState([]);
-  const [Hovered, setHovered] = useState(false);//Boton1
-  const [Hovered2, setHovered2] = useState(false);//Boton2
+  const [Hovered, setHovered] = useState(false); //Boton1
+  const [Hovered2, setHovered2] = useState(false); //Boton2
 
   //Boton 1
   const handleMouseEnter = () => {
@@ -27,38 +26,35 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     setHovered2(false);
   };
 
+  //   useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
+  //       );
+  //       const data = response.data;
+  //       setLog(data);
+  //       console.log("Buscando usuario");
+  //       console.log(log);
+  //       console.log("data en Fetchdata");
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log("Error:", error);
+  //     }
+  //   };fetchData()
+  // }, []);
+
   useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
-      );
-      const data = response.data;
-      setLog(data);
-      console.log("Buscando usuario");
-      console.log(log);
-      console.log("data en Fetchdata");
-      console.log(data);
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };fetchData()
-}, []);
-
-useEffect(() => {
-  console.log(log);
-}, [log]);
-
+    console.log(log);
+  }, [log]);
 
   const handleSubmitClick = async () => {
     if (Object.values(dataForm).some((value) => value === "")) {
       alert("Todos los campos deben ser completados");
       return;
     }
-  
+
     try {
-      
-  
       if (log.length > 0) {
         const response = await axios.put(
           "http://localhost:4000/api/dataform",
@@ -76,7 +72,6 @@ useEffect(() => {
       console.log("Error al enviar los datos:", error);
     }
   };
-  
 
   return (
     <section className="footer-form-section">
@@ -92,32 +87,26 @@ useEffect(() => {
       </article>
 
       <article className="navbar-form-article">
-      {page === 0 ? (
-      <button
-          className="button-form"
-          disabled='true'
-        >
-          <img src={DisableArrow}
-        
-        />
-        </button>
+        {page === 0 ? (
+          <button className="button-form" disabled="true">
+            <img src={DisableArrow} />
+          </button>
+        ) : (
+          <button className="button-form" disabled={page == 0}>
+            <img
+              src={Hovered ? LeftArrow : LeftArrow2}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => {
+                setPage((currPage) => currPage - 1);
+              }}
+            />
+          </button>
+        )}
 
-      ) : (<button
-        className="button-form"
-        disabled={page == 0}
-        
-      >
-        <img src={Hovered ? LeftArrow : LeftArrow2}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => {
-        setPage((currPage) => currPage - 1);
-      }}/>
-      </button>)}
-        
         {page === 7 ? (
           <img
-          className="button-form"
+            className="button-form"
             src="/Botón-Confirmación.png"
             alt="Imagen"
             onClick={handleSubmitClick}
@@ -129,9 +118,11 @@ useEffect(() => {
               setPage((currPage) => currPage + 1);
             }}
           >
-            <img src={Hovered2 ? RightArrow : RightArrow2}
-        onMouseEnter={handleMouseEnter2}
-        onMouseLeave={handleMouseLeave2}/>
+            <img
+              src={Hovered2 ? RightArrow : RightArrow2}
+              onMouseEnter={handleMouseEnter2}
+              onMouseLeave={handleMouseLeave2}
+            />
           </button>
         )}
       </article>

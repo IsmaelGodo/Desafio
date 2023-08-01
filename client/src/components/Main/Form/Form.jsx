@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sexo from "../Form/Sexo/Sexo";
 import Edad from "../Form/Edad/Edad";
 import Altura from "../Form/Altura/Altura";
@@ -8,7 +8,6 @@ import Enfermedad from "../Form/Enfermedad/Enfermedad";
 import Actividad from "../Form/Actividad/Actividad";
 import Confirmation from "../Form/Confirmation/Confirmation";
 import FooterForm from "./FooterForm/FooterForm";
-import { UserLoggedContext } from "../../../context/userLoggedContext";
 import Cookies from "js-cookie";
 
 const Form = () => {
@@ -20,7 +19,7 @@ const Form = () => {
     const user_id = Cookies.get("user-logged");
     setUserLogged(user_id);
     console.log(userLogged);
-  });
+  }, []);
 
   // console.log(userLogged);
 
