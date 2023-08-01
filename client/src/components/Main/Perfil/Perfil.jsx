@@ -3,7 +3,7 @@ import axios from "axios";
 import NavBar from "../Home/NavBar/NavBar";
 import { UserLoggedContext } from "../../../context/userLoggedContext";
 
-const Diagnostico = () => {
+const Perfil = () => {
 
   const { userLogged } = useContext(UserLoggedContext);
 
@@ -103,4 +103,4 @@ const Diagnostico = () => {
   );
 };
 
-export default Diagnostico;
+export default Perfil;

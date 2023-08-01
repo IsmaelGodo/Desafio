@@ -161,7 +161,7 @@ const Form = () => {
   };
 
   //States Actividad:
-  const [actividad, setActividad] = useState("opcion1");
+  const [actividad, setActividad] = useState("");
 
   const handleActividadChange = (event) => {
     setActividad(event.target.value);

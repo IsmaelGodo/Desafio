@@ -7,10 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: import.meta.env.VITE_API_KEY,
+        target: "http://localhost:4000",
       },
       "/auth": {
-        target: import.meta.env.VITE_API_KEY,
+        target: "http://localhost:4000",
       },
     },
   },
