@@ -1,15 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CuidatermIcon from "../../../assets/icons/Cuidaterm-Icon.svg";
 import NavBar from "../Home/NavBar/NavBar";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const Diagnostic = () => {
 
-  const [userLogged, setUserLogged] = useState(null);
+  // const [userLogged, setUserLogged] = useState(null);
+  const [userData, setUserData] = useState({});
 
-  useEffect(()=>{
+  useEffect(() => {
+    const user_id = Cookies.get("user-logged");
 
-  })
+    const getUserData = async () => {
+      try {
+        const response = await axios.get(
+          `/api/users?user_id=${parseInt(user_id)}`
+        );
+        const user = await response.data;
+        console.log(user[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUserData();
+  }, []);
 
   const symthoms = [
     "Fiebre de más de 40ºC.",
@@ -53,7 +70,6 @@ const Diagnostic = () => {
         <NavBar />
       </div>
     </section>
-    
   );
 };
 

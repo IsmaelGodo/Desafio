@@ -73,14 +73,16 @@ const checkToken = async (req, res, next) => {
       }
     });
   } else {
-    res.sendStatus(401).json({
-      message: "Token not provided",
-    });
+    // res.sendStatus(401).json({
+    //   message: "Token not provided",
+    // });
+    console.log("Token not provided");
+    res.redirect("/login");
   }
 };
 
 module.exports = {
   checkEmailAndPassword,
   checkUser,
-  checkToken
+  checkToken,
 };

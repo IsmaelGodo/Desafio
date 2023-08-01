@@ -5,11 +5,10 @@ import { UserLoggedContext } from "../../../context/userLoggedContext";
 
 const Perfil = () => {
 
-  const { userLogged } = useContext(UserLoggedContext);
+  // const { userLogged } = useContext(UserLoggedContext)
 
   const [diagData, setDiagData] = useState([]);
 
-  console.log(userLogged.user_id)
 
   // useEffect(() => {
   // const fetchData = async () => {

@@ -26,51 +26,52 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     setHovered2(false);
   };
 
-  //   useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
-  //       );
-  //       const data = response.data;
-  //       setLog(data);
-  //       console.log("Buscando usuario");
-  //       console.log(log);
-  //       console.log("data en Fetchdata");
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.log("Error:", error);
-  //     }
-  //   };fetchData()
-  // }, []);
 
-  useEffect(() => {
-    console.log(log);
-  }, [log]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
+        );
+        const data = await response.data;
+
+
+        setLog(data);
+        console.log("Buscando usuario");
+        console.log(log);
+        console.log("data en Fetchdata");
+        console.log(data);
+
+        try {
+          if (data.length > 0) {
+            const response = await axios.put(
+              "http://localhost:4000/api/dataform",
+              dataForm
+            );
+            console.log("Respuesta del servidor:", response.data);
+          } else {
+            const response = await axios.post(
+              "http://localhost:4000/api/dataform",
+              dataForm
+            );
+            console.log("Respuesta del servidor:", response.data);
+          }
+        } catch (error) {
+          console.log("Error al enviar los datos:", error);
+        }
+
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
 
   const handleSubmitClick = async () => {
     if (Object.values(dataForm).some((value) => value === "")) {
       alert("Todos los campos deben ser completados");
       return;
     }
+    await fetchData()
 
-    try {
-      if (log.length > 0) {
-        const response = await axios.put(
-          "http://localhost:4000/api/dataform",
-          dataForm
-        );
-        console.log("Respuesta del servidor:", response.data);
-      } else {
-        const response = await axios.post(
-          "http://localhost:4000/api/dataform",
-          dataForm
-        );
-        console.log("Respuesta del servidor:", response.data);
-      }
-    } catch (error) {
-      console.log("Error al enviar los datos:", error);
-    }
+
   };
 
   return (
