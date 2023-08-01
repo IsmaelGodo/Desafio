@@ -17,7 +17,7 @@ const Enfermedad = ({
 
   return (
     <article className="disease">
-      <p>
+      <div>
         <div className={`img-container-${styleCardio}`}>
           <img
             className="disease-img"
@@ -50,8 +50,8 @@ const Enfermedad = ({
           />
           <span>Digestiva</span>
         </div>
-      </p>
-      <p>
+      </div>
+      <div>
         <div className={`img-container-${styleNeuro}`}>
           <img
             className="disease-img"
@@ -84,7 +84,7 @@ const Enfermedad = ({
           />
           <span>Pulmonar</span>
         </div>
-      </p>
+      </div>
     </article>
   );
 };

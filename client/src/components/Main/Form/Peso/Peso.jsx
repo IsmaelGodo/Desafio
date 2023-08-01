@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import ResetIcon from '../../../../assets/icons/Icono-Resetear.svg'
+import ResetIcon from "../../../../assets/icons/Icono-Resetear.svg";
 
 const Peso = ({ peso, handlePesoChange, handleClearWeight }) => {
   return (
     <>
-      <input className="input_form" type="text" value={peso} placeholder="kg" />
+      <input
+        className="input_form"
+        type="text"
+        defaultValue={peso}
+        placeholder="kg"
+      />
       <article className="teclado">
         <div className="teclado-row">
           <button onClick={() => handlePesoChange("1")}>1</button>

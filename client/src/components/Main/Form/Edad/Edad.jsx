@@ -7,7 +7,7 @@ const Edad = ({ handleEdadChange, handleClearAge, edad }) => {
       <input
         className="input_form"
         type="text"
-        value={edad}
+        defaultValue={edad}
         placeholder="años"
       />
       <article className="teclado">

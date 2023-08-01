@@ -1,8 +1,51 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import LeftArrow from "../../../../assets/icons/Izquierda-Desactivado.svg";
 import RightArrow from "../../../../assets/icons/Derecha-Desactivado.svg";
 
+const FooterForm = ({ page, setPage, dataForm }) => {
+  const [log, setLog] = useState({});
+  const [method, setMethod] = useState("post");
 
-const FooterForm = ({ page, setPage }) => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
+      );
+      const data = response.data;
+      setLog(data[0]);
+      console.log("Buscando usuario");
+      console.log(data[0]);
+      console.log(log);
+      console.log(log.length);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
+  const handleSubmitClick = async () => {
+    if (Object.values(dataForm).some((value) => value === "")) {
+      alert("Todos los campos deben ser completados");
+      return;
+    }
+    await fetchData();
+    console.log("Probando cambio estado");
+    console.log(log);
+    try {
+      if (log.length > 0) {
+        setMethod("put");
+      }
+
+      const response = await axios.put(
+        "http://localhost:4000/api/dataform",
+        dataForm
+      );
+      console.log("Respuesta del servidor:", response.data);
+    } catch (error) {
+      console.log("Error al enviar los datos:", error);
+    }
+  };
+
   return (
     <section className="footer-form-section">
       <article className="progressbar">
@@ -27,7 +70,11 @@ const FooterForm = ({ page, setPage }) => {
           <img src={LeftArrow} alt="" />
         </button>
         {page === 7 ? (
-          <img src="/Botón-Presionado-Derecha.png" alt="Imagen" />
+          <img
+            src="/Botón-Confirmación.png"
+            alt="Imagen"
+            onClick={handleSubmitClick}
+          />
         ) : (
           <button
             className="button-form"

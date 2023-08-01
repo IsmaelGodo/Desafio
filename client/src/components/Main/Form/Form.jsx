@@ -154,7 +154,7 @@ const Form = () => {
   };
   //Objeto Data
   const dataForm = {
-    user_id: 5,
+    user_id: 8,
     sex: genero,
     age: edad,
     height: displayedNumberHeight,
@@ -179,7 +179,7 @@ const Form = () => {
         {PageDisplay()}
       </section>
 
-      <FooterForm page={page} setPage={setPage}/>
+      <FooterForm page={page} setPage={setPage} dataForm={dataForm}/>
     </>
   );
 };

@@ -11,7 +11,7 @@ const Altura = ({
       <input
         className="input_form"
         type="text"
-        value={displayedNumberHeight}
+        defaultValue={displayedNumberHeight}
         placeholder="cm"
       />
       <article className="teclado">
