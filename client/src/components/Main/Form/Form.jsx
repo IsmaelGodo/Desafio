@@ -102,20 +102,20 @@ const Form = () => {
   };
 
   //States Edad:
-  const [edad, setEdad] = useState("");
+  const [edad, setEdad] = useState(0);
   const handleEdadChange = (number) => {
     setEdad((prevNumber) => prevNumber + number);
   };
   const handleClearAge = () => {
-    setEdad("");
+    setEdad(0);
   };
   //States Altura:
-  const [displayedNumberHeight, setDisplayedNumberHeight] = useState("");
+  const [displayedNumberHeight, setDisplayedNumberHeight] = useState(0);
   const handleButtonClickHeight = (number) => {
     setDisplayedNumberHeight((prevNumber) => prevNumber + number);
   };
   const handleClearHeight = () => {
-    setDisplayedNumberHeight("");
+    setDisplayedNumberHeight(0);
   };
   //States Sexo:
   const [genero, setGenero] = useState("");
@@ -123,12 +123,12 @@ const Form = () => {
     setGenero(generoSeleccionado);
   };
   //States Peso:
-  const [peso, setPeso] = useState("");
+  const [peso, setPeso] = useState(0);
   const handlePesoChange = (number) => {
     setPeso((prevNumber) => prevNumber + number);
   };
   const handleClearWeight = () => {
-    setPeso("");
+    setPeso(0);
   };
   //States Agua:
   const [cantidadAgua, setCantidadAgua] = useState(0);
@@ -190,7 +190,7 @@ const Form = () => {
 
       <section className="body-form-section">{PageDisplay()}</section>
 
-      <FooterForm page={page} setPage={setPage} dataForm={dataForm} />
+      <FooterForm page={page} setPage={setPage} dataForm={dataForm} userLogged={userLogged} />
     </>
   );
 };
