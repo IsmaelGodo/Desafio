@@ -1,48 +1,88 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import NavBar from "../Home/NavBar/NavBar";
-import { UserLoggedContext } from "../../../context/userLoggedContext";
+import Cookies from "js-cookie";
+//import { UserLoggedContext } from "../../../context/userLoggedContext";
 
 const Perfil = () => {
 
   // const { userLogged } = useContext(UserLoggedContext)
 
   const [diagData, setDiagData] = useState([]);
+  const [profile, setProfile] = useState([]);
+  useEffect(() => {
+    const user_id = Cookies.get("user-logged");
+
+    const getUserData = async () => {
+      try {
+        const response = await axios.get(
+          `/api/users?user_id=${parseInt(user_id)}`
+        );
+        const user = await response.data;
+        const newProfile = user.map((prof, index) => ({
+          key: index,
+          user_id: prof.user_id,
+          username: prof.username.charAt(0).toUpperCase() + prof.username.slice(1).toLowerCase(),
+          email: prof.email,
+          
+        }));
+        setProfile(newProfile);
+        //console.log(user[0]);
+        try {
+          const response = await axios.get(
+            `http://localhost:4000/api/dataform?user_id=${parseInt(user[0].user_id)}`
+          );
+          const data = await response.data;
+          const newDignostic = data.map((diag, index) => ({
+            key: index,
+            user_id: diag.user_id,
+            age: diag.age,
+            sex: diag.sex,
+            height: diag.height,
+            weight: diag.weight,
+            water_gl: diag.water_gl,
+            activity:diag.activity,
+            cardio_dis: diag.cardio_dis,
+            digest_dis: diag.digest_dis,
+            neuro_dis: diag.neuro_dis,
+            lung_dis: diag.lung_dis,
+            
+          }));
+          setDiagData(newDignostic);
+        } catch (error) {
+          console.log("Error:", error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUserData();
+  }, []);
+//  console.log(diagData[0]);
+ // console.log(profile[0])
 
 
-  // useEffect(() => {
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:4000/api/dataform?user_id=${parseInt(userLogged.user_id)}`
-  //     );
-  //     const data = response.data;
-  //     setDiagData(data);
-  //     console.log(diagData);
-  //   } catch (error) {
-  //     console.log("Error:", error);
-  //   }
-  // };fetchData();
-  // }, []);
-  //Objeto de prueba
-  const dataMentira = {
-    name: "Federico",
-    sex: "Masculino",
-    age: "33",
-    height: "180",
-    weight: "600",
-    water_gl: "4",
-    activity: "Moderada",
-    cardio_dis: false,
-    digest_dis: false,
-    neuro_dis: true,
-    lung_dis: true,
-  };
+  // //Objeto de prueba
+  // const dataMentira = {
+  //   name: "Federico",
+  //   sex: "Masculino",
+  //   age: "33",
+  //   height: "180",
+  //   weight: "600",
+  //   water_gl: "4",
+  //   activity: "Moderada",
+  //   cardio_dis: false,
+  //   digest_dis: false,
+  //   neuro_dis: true,
+  //   lung_dis: true,
+  // };
 
   return (
     <>
       <section className="header_perfil-section">
-        <h1>{dataMentira.name}</h1>
+        <h1>Bienvenido/a: {profile.length > 0 ? profile[0].username : 'Loading...'}</h1>
+        
       </section>
 
       <section className="body-form-section">
@@ -51,47 +91,47 @@ const Perfil = () => {
             <section>
               <p>
                 <h3>Sexo</h3>
-                {dataMentira.sex}
+                {diagData.length > 0 ? diagData[0].sex : 'Loading...'}
               </p>
             </section>
             <section>
               <p>
                 <h3>Edad</h3>
-                {dataMentira.age}Años
+                {diagData.length > 0 ? diagData[0].age : 'Loading...'}Años
               </p>
             </section>
             <section>
               <p>
                 <h3>Altura</h3>
               </p>
-              <p>{dataMentira.height}cm</p>
+              <p>{diagData.length > 0 ? diagData[0].height : 'Loading...'}cm</p>
             </section>
             <section>
               <p>
                 <h3>Peso</h3>
               </p>
-              <p>{dataMentira.weight}Kg</p>
+              <p>{diagData.length > 0 ? diagData[0].weight : 'Loading...'}Kg</p>
             </section>
             <section>
               <p>
                 <h3>Hidratacion</h3>
               </p>
-              <p>{dataMentira.water_gl}Vasos</p>
+              <p>{diagData.length > 0 ? diagData[0].water_gl : 'Loading...'}Vasos</p>
             </section>
             <section>
               <p>
                 <h3>Actividad</h3>
               </p>
-              <p>{dataMentira.activity}</p>
+              <p>{diagData.length > 0 ? diagData[0].activity : 'Loading...'}</p>
             </section>
             <section>
               <p>
                 <h3>Enfermedad</h3>
               </p>
-              {dataMentira.cardio_dis !== false && <p>{`Cardiopatía`}</p>}
-              {dataMentira.digest_dis !== false && <p>{`Digestiva`}</p>}
-              {dataMentira.neuro_dis !== false && <p>{`Neuronal`}</p>}
-              {dataMentira.lung_dis !== false && <p>{`Pulmonar`}</p>}
+              {diagData.length > 0 && diagData[0].cardio_dis !== false && <p>{`Cardiopatía`}</p>}
+              {diagData.length > 0 && diagData[0].digest_dis !== false && <p>{`Digestiva`}</p>}
+              {diagData.length > 0 && diagData[0].neuro_dis !== false && <p>{`Neuronal`}</p>}
+              {diagData.length > 0 && diagData[0].lung_dis !== false && <p>{`Pulmonar`}</p>}
             </section>
           </article>
           ;

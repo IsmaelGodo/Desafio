@@ -53,21 +53,18 @@ const NavBar = () => {
     <article className="navbar-article">
       <nav className="navbar">
         <img
-          src={Hovered ? NavbarIconAlt : NavbarIcon}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          src={location.pathname === "/home" ? NavbarIconAlt : NavbarIcon}
+          
           onClick={handleClick1}
         />
         <img
-          src={Hovered2 ? NavbarIcon2Alt : NavbarIcon2}
-          onMouseEnter={handleMouseEnter2}
-          onMouseLeave={handleMouseLeave2}
+          src={location.pathname === "/diagnostic" ? NavbarIcon2Alt : NavbarIcon2}
+          
           onClick={handleClick2}
         />
         <img
-          src={Hovered3 ? NavbarIcon3Alt : NavbarIcon3}
-          onMouseEnter={handleMouseEnter3}
-          onMouseLeave={handleMouseLeave3}
+          src={location.pathname === "/perfil" ? NavbarIcon3Alt : NavbarIcon3}
+          
           onClick={handleClick3}
         />
       </nav>
