@@ -19,33 +19,19 @@ const NavBar = () => {
   const [Hovered3, setHovered3] = useState(false); //Boton3
 
   //Boton 1
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
+  
   const handleClick1 = () => {
     navigate("/home");
   };
   //Boton 2
-  const handleMouseEnter2 = () => {
-    setHovered2(true);
-  };
-  const handleMouseLeave2 = () => {
-    setHovered2(false);
-  };
+  
+ 
   const handleClick2 = () => {
     navigate("/diagnostic");
   };
   //Boton 3
-  const handleMouseEnter3 = () => {
-    setHovered3(true);
-  };
-  const handleMouseLeave3 = () => {
-    setHovered3(false);
-  };
-  const handleClick3 = () => {
+ 
+    const handleClick3 = () => {
     navigate("/perfil");
   };
 
