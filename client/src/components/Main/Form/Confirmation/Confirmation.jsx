@@ -10,19 +10,19 @@ const Confirmation = ({ dataForm }) => {
       </div>
       <div>
         <h3>Edad</h3>
-        {dataForm.age}Años
+        {dataForm.age} años
       </div>
       <div>
         <h3>Altura</h3>
-        <p>{dataForm.height}cm</p>
+        <p>{dataForm.height} cm</p>
       </div>
       <div>
           <h3>Peso</h3>
-        <p>{dataForm.weight}Kg</p>
+        <p>{dataForm.weight} kg</p>
       </div>
       <div>
           <h3>Hidratacion</h3>
-        <p>{dataForm.water_gl} Vasos</p>
+        <p>{dataForm.water_gl} vasos</p>
       </div>
       <div>
           <h3>Actividad</h3>

@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import NavBar from "../Home/NavBar/NavBar";
 import Cookies from "js-cookie";
-//import { UserLoggedContext } from "../../../context/userLoggedContext";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Perfil = () => {
-  // const { userLogged } = useContext(UserLoggedContext)
-
+  const navigate = useNavigate();
   const [diagData, setDiagData] = useState([]);
   const [profile, setProfile] = useState([]);
   useEffect(() => {
@@ -63,9 +62,30 @@ const Perfil = () => {
   //  console.log(diagData[0]);
   // console.log(profile[0])
 
+  const handleClick = async () => {
+    try {
+      const response = await fetch("/auth/logout");
+      const data = await response.json();
+      console.log(data);
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <section className="header-perfil-section header_form-section-confirmation">
+        <div className="header-perfil-div">
+          <Link className="header-perfil-link" to={"/form"}>
+            Repetir formulario
+          </Link>
+          <a className="header-perfil-link" onClick={handleClick}>
+            Salir
+          </a>
+        </div>
         <h1>
           Bienvenido/a:{" "}
           {profile.length > 0 ? profile[0].username : "Loading..."}
@@ -86,18 +106,23 @@ const Perfil = () => {
             <div>
               <h3>Altura</h3>
 
-              <p>{diagData.length > 0 ? diagData[0].height : "Loading..."} cm</p>
+              <p>
+                {diagData.length > 0 ? diagData[0].height : "Loading..."} cm
+              </p>
             </div>
             <div>
               <h3>Peso</h3>
 
-              <p>{diagData.length > 0 ? diagData[0].weight : "Loading..."} kg</p>
+              <p>
+                {diagData.length > 0 ? diagData[0].weight : "Loading..."} kg
+              </p>
             </div>
             <div>
               <h3>Hidratacion</h3>
 
               <p>
-                {diagData.length > 0 ? diagData[0].water_gl : "Loading..."} vasos
+                {diagData.length > 0 ? diagData[0].water_gl : "Loading..."}{" "}
+                vasos
               </p>
             </div>
             <div>

@@ -39,9 +39,13 @@ const LoginForm = () => {
             const data = await response.data;
             setTimeout(() => {
               if (data.length > 0) {
-                navigate('/perfil');
+                setTimeout(() => {
+                  navigate('/perfil');
+                }, 500);
               } else {
-                navigate('/form');
+                setTimeout(() => {
+                  navigate('/form');
+                }, 500);
               }
             }, 500);
           } catch (error) {

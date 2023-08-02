@@ -33,6 +33,15 @@ const getToken = async (req, res) => {
     });
 };
 
+const clearCookies = (req, res) => {
+  console.log("clearCookies");
+  // req.session.destroy();
+  res.clearCookie("access-token").clearCookie("user-logged").json({
+    message: "Sesión cerrada correctamente"
+  });
+};
+
 module.exports = {
   getToken,
+  clearCookies,
 };

@@ -1,13 +1,6 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
-// Pefil
-
-.header-perfil-section {
-    @include flex-column;
-    height: 250px;
-}
-
 .header_form-section-confirmation {
     background-color: $dark-blue;
     color: white;

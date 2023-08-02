@@ -1,0 +1,22 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.header-perfil-section {
+    @include flex-column;
+    height: 250px;
+}
+
+.header-perfil-div {
+    @include flex-row;
+    gap: 3rem;
+}
+
+.header-perfil-link, .header-perfil-link:active, .header-perfil-link:visited {
+    color: white;
+}
+
+.header-perfil-link:hover {
+    cursor: pointer;
+    color: $dark-orange;
+}
+
