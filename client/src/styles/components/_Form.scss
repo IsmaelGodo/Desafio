@@ -12,6 +12,24 @@
     width: 60%;
 }
 
+.header_form-section-confirmation {
+    background-color: $dark-blue;
+    color: white;
+    padding-bottom: 1rem;
+}
+
+.header_form-section-confirmation h1 {
+    font-size: 2.1rem;
+    margin-top: 5rem;
+    margin-bottom: 0;
+}
+
+.header_form-section-confirmation h2 {
+    margin: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
 .header_form-section h1 {
     color: $turquoise-blue;
     font-size: 2.1rem;
@@ -26,10 +44,15 @@
     font-weight: 400;
 }
 
+
 .body-form-section {
     width: 100%;
     height: 70%;
     @include flex-column;
+}
+
+.body-form-section p {
+    color: $turquoise-blue
 }
 
 // Sex
@@ -184,16 +207,23 @@
     border: 4px solid $dark-orange;
 }
 
-// Result
+// Confirmation
 
-.grid-container{
+.grid-container {
     display: block;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 4rem;
+}
+
+.grid-container div {
+    text-align: left;
 }
 
 .grid-container h3{
     color: $dark-blue;
+    margin: 0.2rem 0;
 }
 
 // Footer

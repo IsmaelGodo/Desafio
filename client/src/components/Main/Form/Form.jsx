@@ -12,14 +12,12 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 const Form = () => {
-
   const [userLogged, setUserLogged] = useState(null);
-  const [username, setUserName] = useState('');
+  const [username, setUserName] = useState("");
 
-  // Getting user_id from cookie and 
+  // Getting user_id from cookie and
   useEffect(() => {
-
-    const getUserIdAndUserName = async ()=> {
+    const getUserIdAndUserName = async () => {
       const user_id = Cookies.get("user-logged");
       setUserLogged(user_id);
 
@@ -28,13 +26,13 @@ const Form = () => {
           `/api/users?user_id=${parseInt(user_id)}`
         );
         const user = await response.data;
-        setUserName(user[0].username)
+        setUserName(user[0].username);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
-    getUserIdAndUserName()
+    getUserIdAndUserName();
   }, []);
 
   // console.log(userLogged);
@@ -49,7 +47,7 @@ const Form = () => {
     "¿Te hidratas?",
     "¿Qué tipo de enfermedad tienes?",
     "¿Realizas actividad física?",
-    `Bienvenido ${username}`,
+    `¡Bienvenido ${username}!`,
   ];
   const FormSubtitles = [
     "Tus hormonas pueden afectar al cálculo",
@@ -118,20 +116,20 @@ const Form = () => {
   };
 
   //States Edad:
-  const [edad, setEdad] = useState('');
+  const [edad, setEdad] = useState("");
   const handleEdadChange = (number) => {
     setEdad((prevNumber) => prevNumber + number);
   };
   const handleClearAge = () => {
-    setEdad('');
+    setEdad("");
   };
   //States Altura:
-  const [displayedNumberHeight, setDisplayedNumberHeight] = useState('');
+  const [displayedNumberHeight, setDisplayedNumberHeight] = useState("");
   const handleButtonClickHeight = (number) => {
     setDisplayedNumberHeight((prevNumber) => prevNumber + number);
   };
   const handleClearHeight = () => {
-    setDisplayedNumberHeight('');
+    setDisplayedNumberHeight("");
   };
   //States Sexo:
   const [genero, setGenero] = useState("");
@@ -139,12 +137,12 @@ const Form = () => {
     setGenero(generoSeleccionado);
   };
   //States Peso:
-  const [peso, setPeso] = useState('');
+  const [peso, setPeso] = useState("");
   const handlePesoChange = (number) => {
     setPeso((prevNumber) => prevNumber + number);
   };
   const handleClearWeight = () => {
-    setPeso('');
+    setPeso("");
   };
   //States Agua:
   const [cantidadAgua, setCantidadAgua] = useState(0);
@@ -197,17 +195,31 @@ const Form = () => {
   };
   // console.log(dataForm);
 
-  
+  const [headerClassName, setHeaderClassName] = useState("header_form-section");
+
+  useEffect(() => {
+    if (page === 7) {
+      setHeaderClassName("header_form-section-confirmation");
+    } else {
+      setHeaderClassName("header_form-section");
+    }
+  }, [page]);
+
   return (
     <>
-      <section className="header_form-section">
+      <section className={headerClassName}>
         <h1>{FormTitles[page]}</h1>
         <h2>{FormSubtitles[page]}</h2>
       </section>
 
       <section className="body-form-section">{PageDisplay()}</section>
 
-      <FooterForm page={page} setPage={setPage} dataForm={dataForm} userLogged={userLogged} />
+      <FooterForm
+        page={page}
+        setPage={setPage}
+        dataForm={dataForm}
+        userLogged={userLogged}
+      />
     </>
   );
 };
