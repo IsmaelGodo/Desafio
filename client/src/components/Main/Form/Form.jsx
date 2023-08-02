@@ -179,8 +179,9 @@ const Form = () => {
     neuro_dis: neuro,
     lung_dis: lung,
   };
-  console.log(dataForm);
+  // console.log(dataForm);
 
+  
   return (
     <>
       <section className="header_form-section">
