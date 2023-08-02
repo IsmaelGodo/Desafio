@@ -12,12 +12,9 @@ const NavBar = () => {
   const navigate = useNavigate();
 
   let location = useLocation();
-  console.log(location.pathname);
+  //console.log(location.pathname);
 
-  const [Hovered, setHovered] = useState(false); //Boton1
-  const [Hovered2, setHovered2] = useState(false); //Boton2
-  const [Hovered3, setHovered3] = useState(false); //Boton3
-
+ 
   //Boton 1
   
   const handleClick1 = () => {

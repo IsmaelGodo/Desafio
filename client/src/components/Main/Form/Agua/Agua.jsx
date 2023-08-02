@@ -8,7 +8,7 @@ const Agua = ({ disminuirAgua, aumentarAgua, cantidadAgua }) => {
         <input
             className="input_form"
             type="text"
-            value={cantidadAgua}
+            defaultValue={cantidadAgua}
             placeholder="kg"
           />
       </article>

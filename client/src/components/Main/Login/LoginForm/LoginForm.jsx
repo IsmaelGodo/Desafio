@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { UserLoggedContext } from "../../../../context/userLoggedContext";
 
 const LoginForm = () => {
@@ -29,9 +30,23 @@ const LoginForm = () => {
         console.log(resData.successful);
 
         if (resData.successful) {
-          setTimeout(() => {
-            navigate("/form");
-          }, 500);
+          try {
+            console.log(resData.user_id)
+  
+            const response = await axios.get(
+              `/api/dataform?user_id=${resData.user_id}`
+            );
+            const data = await response.data;
+            setTimeout(() => {
+              if (data.length > 0) {
+                navigate('/perfil');
+              } else {
+                navigate('/form');
+              }
+            }, 500);
+          } catch (error) {
+            console.log("Error al enviar los datos:", error);
+          }
         } else {
           setMessage(resData.message);
         }
