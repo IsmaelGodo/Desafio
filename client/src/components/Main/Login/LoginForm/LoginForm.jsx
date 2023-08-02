@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { UserLoggedContext } from "../../../../context/userLoggedContext";
 
 const LoginForm = () => {
-
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const passRe = /^[\w\-.@]{8,16}$/;
   // const [emailState, setEmailState] = useState("");
   // const [passwordState, setpasswordState] = useState("");
 
@@ -24,21 +24,24 @@ const LoginForm = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
-        const resData = await res.json();
-        console.log(resData);
-        setMessage(resData.message);
 
-          
+        const resData = await res.json();
+        console.log(resData.successful);
+
+        if (resData.successful) {
+          setTimeout(() => {
+            navigate("/form");
+          }, 500);
+        } else {
+          setMessage(resData.message);
+        }
       } catch (error) {
         console.log(error);
         setMessage(error);
       }
     };
-    handleLogin();
 
-    setTimeout(() => {
-      navigate('/form');
-    }, 500);
+    handleLogin();
   };
   // console.log(errors);
 
@@ -63,16 +66,33 @@ const LoginForm = () => {
         <input
           type="password"
           placeholder="Contraseña"
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: "Required field",
+            minLength: {
+              value: 8,
+              message:
+                "Password should have between 6-12 alphanumeric characters or: / . - _",
+            },
+            maxLength: {
+              value: 16,
+              message:
+                "Password should have between 6-12 alphanumeric characters or: / . - _",
+            },
+            pattern: {
+              value: passRe,
+              message:
+                "Password should have between 6-12 alphanumeric characters or: / . - _",
+            },
+          })}
           // onChange={handlePasswordChange}
         />
         <p className="error-message">
           {errors.password && errors.password.message}
         </p>
         {}
-        <input type="submit" value="Acceso" className="actived-button"/>
+        <input type="submit" value="Acceso" className="actived-button" />
       </form>
-      {message && <div>{message}</div>}
+      <div className="login-message">{message && <p>{message}</p>}</div>
     </article>
   );
 };

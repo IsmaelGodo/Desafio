@@ -3,11 +3,19 @@
 
 .login-section {
     box-sizing: border-box;
-    max-width: 500px;
+    @include flex-column;
+    height: 100%;
+    width: 100%;
+    background-color: white;
 }
 
 .logo-article img {
     height: 185px;
+}
+
+.login-form-article {
+    width: 80%;
+    max-width: 500px;
 }
 
 .login-form {
@@ -19,7 +27,7 @@
 .login-form > input {
     text-align: center;
     width: 100%;
-    height: 4rem;
+    height: 3.6rem;
     font-size: 1.2rem;
     border: 2px solid $turquoise-blue;
     border-radius: 20px;
@@ -36,7 +44,7 @@
 }
 
 .login-form input[type="submit"] {
-    height: 4.2rem;
+    height: 4rem;
     width: 70%;
     border: none;
     border-radius: 40px;
@@ -46,7 +54,20 @@
 }
 
 .login-form input[type="submit"]:active {
-    
     background-color: $light-blue;
     color: $dark-blue;
+}
+
+.login-message {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.signup-link-article {
+    margin-top: 1.6rem;
+}
+
+.signup-link, .signup-link:visited, .signup-link:active {
+    color: $dark-blue;
+    font-size: 1.5rem;
 }

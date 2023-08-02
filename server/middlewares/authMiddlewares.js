@@ -25,12 +25,12 @@ const checkEmailAndPassword = async (req, res, next) => {
       next();
     } else {
       res.status(401).json({
-        message: "",
+        message: "El password no es correcto",
       });
     }
   } else {
     res.status(401).json({
-      message: `User ${user.username} doesn't exist in the system`,
+      message: `El email ${req.body.email} no existe`,
     });
   }
 };

@@ -10,8 +10,8 @@ const Login = () => {
       <img src={CuidaTermLogo} alt="" />
     </article>
       <LoginForm />
-      <article className="">
-        <Link to='/signup' >Click here to register</Link>
+      <article className="signup-link-article">
+        <Link className="signup-link" to='/signup' >Regístrate</Link>
       </article>
     </section>
   );
