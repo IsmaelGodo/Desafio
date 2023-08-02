@@ -37,7 +37,9 @@ const Diagnostic = () => {
   ];
 
   return (
-    <section className="diagnostic-section">
+    
+    <>
+        <section className="diagnostic-section">
       <article className="diagnostic-header-article">
         <div>
           <h1>Diagnóstico</h1>
@@ -66,10 +68,9 @@ const Diagnostic = () => {
           más cercano lo antes posible para recibir el tratamiento necesario.
         </p>
       </article>
-      <div className="diagnostic-navbar-div">
-        <NavBar />
-      </div>
     </section>
+    <NavBar />
+    </>
   );
 };
 

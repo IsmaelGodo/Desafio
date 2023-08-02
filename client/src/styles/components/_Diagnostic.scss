@@ -3,11 +3,16 @@
 
 
 .diagnostic-section {
-    // @include flex-column;
+    @include flex-column;
     min-height: 100vh;
+    // justify-content: flex-start;
     line-height: 200%;
     text-align: left;
     color: $turquoise-blue;
+}
+
+.diagnostic-header-article {
+    width: 100%;
 }
 
 .diagnostic-header-article div {
@@ -29,5 +34,6 @@
 }
 
 .diagnostic-navbar-div {
-    @include flex-row
+    @include flex-row;
+    height: 100px;
 }
