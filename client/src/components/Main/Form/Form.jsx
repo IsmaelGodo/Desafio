@@ -102,20 +102,20 @@ const Form = () => {
   };
 
   //States Edad:
-  const [edad, setEdad] = useState(0);
+  const [edad, setEdad] = useState('');
   const handleEdadChange = (number) => {
     setEdad((prevNumber) => prevNumber + number);
   };
   const handleClearAge = () => {
-    setEdad(0);
+    setEdad('');
   };
   //States Altura:
-  const [displayedNumberHeight, setDisplayedNumberHeight] = useState(0);
+  const [displayedNumberHeight, setDisplayedNumberHeight] = useState('');
   const handleButtonClickHeight = (number) => {
     setDisplayedNumberHeight((prevNumber) => prevNumber + number);
   };
   const handleClearHeight = () => {
-    setDisplayedNumberHeight(0);
+    setDisplayedNumberHeight('');
   };
   //States Sexo:
   const [genero, setGenero] = useState("");
@@ -123,12 +123,12 @@ const Form = () => {
     setGenero(generoSeleccionado);
   };
   //States Peso:
-  const [peso, setPeso] = useState(0);
+  const [peso, setPeso] = useState('');
   const handlePesoChange = (number) => {
     setPeso((prevNumber) => prevNumber + number);
   };
   const handleClearWeight = () => {
-    setPeso(0);
+    setPeso('');
   };
   //States Agua:
   const [cantidadAgua, setCantidadAgua] = useState(0);
