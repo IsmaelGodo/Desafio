@@ -9,16 +9,32 @@ import Actividad from "../Form/Actividad/Actividad";
 import Confirmation from "../Form/Confirmation/Confirmation";
 import FooterForm from "./FooterForm/FooterForm";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const Form = () => {
 
   const [userLogged, setUserLogged] = useState(null);
+  const [username, setUserName] = useState('');
 
   // Getting user_id from cookie and 
   useEffect(() => {
-    const user_id = Cookies.get("user-logged");
-    setUserLogged(user_id);
-    console.log(userLogged);
+
+    const getUserIdAndUserName = async ()=> {
+      const user_id = Cookies.get("user-logged");
+      setUserLogged(user_id);
+
+      try {
+        const response = await axios.get(
+          `/api/users?user_id=${parseInt(user_id)}`
+        );
+        const user = await response.data;
+        setUserName(user[0].username)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getUserIdAndUserName()
   }, []);
 
   // console.log(userLogged);
@@ -33,7 +49,7 @@ const Form = () => {
     "¿Te hidratas?",
     "¿Qué tipo de enfermedad tienes?",
     "¿Realizas actividad física?",
-    "Bienvenido",
+    `Bienvenido ${username}`,
   ];
   const FormSubtitles = [
     "Tus hormonas pueden afectar al cálculo",

@@ -27,15 +27,18 @@ const LoginForm = () => {
         const resData = await res.json();
         console.log(resData);
         setMessage(resData.message);
+
+          
       } catch (error) {
         console.log(error);
         setMessage(error);
       }
     };
     handleLogin();
+
     setTimeout(() => {
       navigate('/form');
-    }, 1000);
+    }, 500);
   };
   // console.log(errors);
 

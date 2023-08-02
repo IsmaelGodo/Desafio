@@ -31,7 +31,7 @@ const FooterForm = ({ page, setPage, dataForm }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/dataform?user_id=${dataForm.user_id}`
+          `/api/dataform?user_id=${dataForm.user_id}`
         );
         const data = await response.data;
 
@@ -45,13 +45,13 @@ const FooterForm = ({ page, setPage, dataForm }) => {
         try {
           if (data.length > 0) {
             const response = await axios.put(
-              "http://localhost:4000/api/dataform",
+              "/api/dataform",
               dataForm
             );
             console.log("Respuesta del servidor:", response.data);
           } else {
             const response = await axios.post(
-              "http://localhost:4000/api/dataform",
+              "/api/dataform",
               dataForm
             );
             console.log("Respuesta del servidor:", response.data);
@@ -90,7 +90,7 @@ const FooterForm = ({ page, setPage, dataForm }) => {
 
       <article className="navbar-form-article">
         {page === 0 ? (
-          <button className="button-form" disabled="true">
+          <button className="button-form" disabled={true}>
             <img src={DisableArrow} />
           </button>
         ) : (
