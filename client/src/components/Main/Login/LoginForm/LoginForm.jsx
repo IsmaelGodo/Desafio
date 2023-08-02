@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { UserLoggedContext } from "../../../../context/userLoggedContext";
 
 const LoginForm = () => {
@@ -27,7 +28,24 @@ const LoginForm = () => {
         const resData = await res.json();
         console.log(resData);
         setMessage(resData.message);
+        try {
+          console.log(resData.user_id)
 
+          const response = await axios.get(
+            `/api/dataform?user_id=${resData.user_id}`
+          );
+          const data = await response.data;
+          setTimeout(() => {
+            if (data.length > 0) {
+              navigate('/perfil');
+            } else {
+              navigate('/form');
+            }
+          }, 500);
+        } catch (error) {
+          console.log("Error al enviar los datos:", error);
+        }
+        
           
       } catch (error) {
         console.log(error);
@@ -35,11 +53,11 @@ const LoginForm = () => {
       }
     };
     handleLogin();
-
-    setTimeout(() => {
-      navigate('/form');
-    }, 500);
-  };
+  }
+  //   setTimeout(() => {
+  //     navigate('/form');
+  //   }, 500);
+  // };
   // console.log(errors);
 
   // const handleEmailChange = () => {

@@ -89,45 +89,45 @@ const Perfil = () => {
         <div>
           <article className="grid-container">
             <section>
-              <p>
+              
                 <h3>Sexo</h3>
-                {diagData.length > 0 ? diagData[0].sex : 'Loading...'}
+                <p>{diagData.length > 0 ? diagData[0].sex : 'Loading...'}
               </p>
             </section>
             <section>
-              <p>
+              
                 <h3>Edad</h3>
-                {diagData.length > 0 ? diagData[0].age : 'Loading...'}Años
+                <p>{diagData.length > 0 ? diagData[0].age : 'Loading...'}Años
               </p>
             </section>
             <section>
-              <p>
+              
                 <h3>Altura</h3>
-              </p>
+              
               <p>{diagData.length > 0 ? diagData[0].height : 'Loading...'}cm</p>
             </section>
             <section>
-              <p>
+              
                 <h3>Peso</h3>
-              </p>
+              
               <p>{diagData.length > 0 ? diagData[0].weight : 'Loading...'}Kg</p>
             </section>
             <section>
-              <p>
+              
                 <h3>Hidratacion</h3>
-              </p>
+              
               <p>{diagData.length > 0 ? diagData[0].water_gl : 'Loading...'}Vasos</p>
             </section>
             <section>
-              <p>
+              
                 <h3>Actividad</h3>
-              </p>
+              
               <p>{diagData.length > 0 ? diagData[0].activity : 'Loading...'}</p>
             </section>
             <section>
-              <p>
+              
                 <h3>Enfermedad</h3>
-              </p>
+             
               {diagData.length > 0 && diagData[0].cardio_dis !== false && <p>{`Cardiopatía`}</p>}
               {diagData.length > 0 && diagData[0].digest_dis !== false && <p>{`Digestiva`}</p>}
               {diagData.length > 0 && diagData[0].neuro_dis !== false && <p>{`Neuronal`}</p>}
