@@ -5,6 +5,7 @@ import LeftArrow2 from "../../../../assets/icons/Flecha-Izquierda-Presionado.svg
 import RightArrow from "../../../../assets/icons/Flecha-Derecha-Activado.svg";
 import RightArrow2 from "../../../../assets/icons/Flecha-Derecha-Presionado.svg";
 import DisableArrow from "../../../../assets/icons/Flecha-Izquierda-Desactivado.svg";
+import ConfirmationButton from "../../../../assets/icons/Botón-Confirmación.svg";
 
 const FooterForm = ({ page, setPage, dataForm }) => {
   const [log, setLog] = useState([]);
@@ -108,7 +109,7 @@ const FooterForm = ({ page, setPage, dataForm }) => {
         {page === 7 ? (
           <img
             className="button-form"
-            src="/Botón-Confirmación.png"
+            src={ConfirmationButton}
             alt="Imagen"
             onClick={handleSubmitClick}
           />

@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { UserLoggedContext } from "../../../../context/userLoggedContext";
 
 const SignupForm = () => {
   
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [matchMessage, setMatchMessage] = useState(null);
-  const {updateUserLogged} = useContext(UserLoggedContext);
   const passRe = /^[\w\-.@]{8,16}$/;
 
   const {

@@ -32,7 +32,7 @@ const Confirmation = ({dataForm}) => {
     </section>
     <section>
     <p><h3>Hidratacion</h3></p>
-      <p>{dataForm.water_gl}Vasos</p>
+      <p>{dataForm.water_gl} Vasos</p>
     </section>
     <section>
     <p><h3>Actividad</h3></p>

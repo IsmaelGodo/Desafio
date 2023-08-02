@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import MaleIcon from '../../../../assets/icons/Emojy-Hombre.svg'
+import FemaleIcon from '../../../../assets/icons/Emojy-Mujer.svg'
+
 
 const Sexo = ({ handleGeneroChange, genero }) => {
   const [stylemasc, setStylemasc] = useState("regular");
@@ -14,7 +17,7 @@ const Sexo = ({ handleGeneroChange, genero }) => {
           handleGeneroChange("masculino");
         }}
       >
-        <img src="/Emojy-Hombre.png" alt="Masculino" />
+        <img src={MaleIcon} alt="Masculino" />
         <h3>Masculino</h3>
       </article>
       
@@ -26,7 +29,7 @@ const Sexo = ({ handleGeneroChange, genero }) => {
           handleGeneroChange("femenino");
         }}
       >
-        <img src="/Emojy-Mujer.png" alt="Femenino" />
+        <img src={FemaleIcon} alt="Femenino" />
         <h3>Femenino</h3>
       </article>
     </>
