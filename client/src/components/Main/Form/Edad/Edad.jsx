@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ResetIcon from '../../../../assets/icons/Icono-Resetear.svg'
 
 const Edad = ({ handleEdadChange, handleClearAge, edad }) => {
+
+  //Teclado en pantalla
   return (
     <>
       <input

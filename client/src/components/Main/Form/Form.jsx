@@ -51,6 +51,7 @@ const Form = () => {
     "¿Realizas actividad física?",
     `¡Bienvenido ${username}!`,
   ];
+  //Titulos de las vistas
   const FormSubtitles = [
     "Tus hormonas pueden afectar al cálculo",
     "La edad es importante a la hora de medir la vulnerabilidad",
@@ -61,6 +62,7 @@ const Form = () => {
     "La actividad física influye en la temperatura corporal",
     "Revisa que tus datos son los correctos",
   ];
+  //Logica de cambio de vista
   const PageDisplay = () => {
     if (page === 0) {
       return <Sexo handleGeneroChange={handleGeneroChange} genero={genero} />;

@@ -15,6 +15,7 @@ const Enfermedad = ({
   const [styleNeuro, setStyleNeuro] = useState("regular");
   const [styleLung, setStyleLung] = useState("regular");
 
+  //Logica y estilos Imagenes de enfermedades
   return (
     <article className="disease">
       <div>

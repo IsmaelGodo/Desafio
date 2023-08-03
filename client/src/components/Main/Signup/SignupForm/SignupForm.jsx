@@ -16,14 +16,14 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+//Objeto usuario nuevo
   const onSubmit = (data) => {
     const newUser = {
       username: data.username,
       email: data.email,
       password: data.password,
     };
-
+//Objeto login
     const newLogin = {
       email: data.email,
       password: data.password,
@@ -99,7 +99,7 @@ const SignupForm = () => {
           {...register("email", { required: "Required field" })}
         />
         <p className="error-message">{errors.email && errors.email.message}</p>
-
+{/* Validacion de formulario */}
         <input
           type="password"
           placeholder="Password"

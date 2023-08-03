@@ -28,7 +28,7 @@ const FooterForm = ({ page, setPage, dataForm, setErrorMessage }) => {
   const handleMouseLeave2 = () => {
     setHovered2(false);
   };
-
+//Comprobacion de formulario existente
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -68,7 +68,7 @@ const FooterForm = ({ page, setPage, dataForm, setErrorMessage }) => {
     }
     await fetchData();
   };
-
+//Botonera del nav-bar
   return (
     <section className="footer-form-section">
       <article className="progressbar">

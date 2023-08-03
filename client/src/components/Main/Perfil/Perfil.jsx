@@ -8,6 +8,7 @@ const Perfil = () => {
   const navigate = useNavigate();
   const [diagData, setDiagData] = useState([]);
   const [profile, setProfile] = useState([]);
+  //Extraccion del usuario logeado desde la cookie
   useEffect(() => {
     const user_id = Cookies.get("user-logged");
 
@@ -59,6 +60,8 @@ const Perfil = () => {
   //  console.log(diagData[0]);
   // console.log(profile[0])
 
+
+  //Logout
   const handleClick = async () => {
     try {
       const response = await fetch("/auth/logout");

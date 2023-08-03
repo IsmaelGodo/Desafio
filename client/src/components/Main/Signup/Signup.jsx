@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CuidaTermLogo from "../../../assets/images/cuidaterm-logo.svg";
 
 const Signup = () => {
+  //Login
   return (
     <section className="login-section">
       <article className="logo-article">

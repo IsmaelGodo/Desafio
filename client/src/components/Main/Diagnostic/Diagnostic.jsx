@@ -21,6 +21,7 @@ const Diagnostic = () => {
   const [messageDissP, setMessageDissP] = useState("");
   const [messageDissD, setMessageDissD] = useState("");
 
+  //Comprobacion de formulario preexistente y descarga desde la BD
   useEffect(() => {
     const user_id = Cookies.get("user-logged");
     const getUserData = async () => {
@@ -61,6 +62,7 @@ const Diagnostic = () => {
     getUserData();
   }, []);
 
+  //Mockup ,Calculo de IMC
   useEffect(() => {
     setImcResultado(
       (
@@ -166,6 +168,7 @@ const Diagnostic = () => {
           <p>{message}</p>
           <p>{messageAgua}</p>
           <p>{messageActiv}</p>
+          {/* Condicional de enfermedades almacenadas */}
           {diagData[0].cardio_dis !== false && <p>{messageDissC}</p>}
           {diagData[0].digest_dis !== false && <p>{messageDissD}</p>}
           {diagData[0].neuro_dis !== false && <p>{messageDissN}</p>}

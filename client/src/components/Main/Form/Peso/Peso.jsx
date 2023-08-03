@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ResetIcon from "../../../../assets/icons/Icono-Resetear.svg";
 
 const Peso = ({ peso, handlePesoChange, handleClearWeight }) => {
+
+//Teclado en pantalla
+
   return (
     <>
       <input
@@ -10,6 +13,7 @@ const Peso = ({ peso, handlePesoChange, handleClearWeight }) => {
         defaultValue={peso}
         placeholder="kg"
       />
+      
       <article className="teclado">
         <div className="teclado-row">
           <button onClick={() => handlePesoChange("1")}>1</button>

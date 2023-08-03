@@ -7,7 +7,7 @@ import { UserLoggedContext } from "../../../../context/userLoggedContext";
 const LoginForm = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
-  const passRe = /^[\w\-.@]{8,16}$/;
+  const passRe = /^[\w\-.@]{8,16}$/; //Regex
   const { updateUserLogged } = useContext(UserLoggedContext);
   // const [emailState, setEmailState] = useState("");
   // const [passwordState, setpasswordState] = useState("");
