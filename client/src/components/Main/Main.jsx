@@ -34,7 +34,6 @@ const Main = () => {
             <>
               <Route path="/" element={<Login />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
-              <Route path="/form" element={<Form />}></Route>
             </>
           )}
         </Routes>

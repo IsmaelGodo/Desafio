@@ -77,7 +77,6 @@ const checkToken = async (req, res, next) => {
     //   message: "Token not provided",
     // });
     console.log("Token not provided");
-    res.redirect("/login");
   }
 };
 
