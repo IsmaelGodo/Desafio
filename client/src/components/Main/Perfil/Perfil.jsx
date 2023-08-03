@@ -29,7 +29,7 @@ const Perfil = () => {
         //console.log(user[0]);
         try {
           const response = await axios.get(
-            `http://localhost:4000/api/dataform?user_id=${parseInt(
+            `/api/dataform?user_id=${parseInt(
               user[0].user_id
             )}`
           );

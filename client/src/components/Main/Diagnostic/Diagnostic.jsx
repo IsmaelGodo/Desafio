@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 const Diagnostic = () => {
-
   // const [userLogged, setUserLogged] = useState(null);
   const [userData, setUserData] = useState({});
 
@@ -37,39 +36,38 @@ const Diagnostic = () => {
   ];
 
   return (
-    
     <>
-        <section className="diagnostic-section">
-      <article className="diagnostic-header-article">
-        <div>
-          <h1>Diagnóstico</h1>
-          <img src={CuidatermIcon} alt="" />
-        </div>
-      </article>
+      <section className="diagnostic-section">
+        <article className="diagnostic-header-article">
+          <div>
+            <h1>Diagnóstico</h1>
+            <img src={CuidatermIcon} alt="" />
+          </div>
+        </article>
 
-      <article className="diagnostic-response-article">
-        <p>Querido Vicente,</p>
-        <p>
-          En base a tus datos, hay una posibilidad moderada de que sufras un
-          golpe de calor, lo más recomendable es que te protejas logrando un
-          buen equilibrio entre hidratación y exposición solar.
-        </p>
-      </article>
+        <article className="diagnostic-response-article">
+          <p>Querido Ana,</p>
+          <p>
+            En base a tus datos, hay una posibilidad moderada de que sufras un
+            golpe de calor, lo más recomendable es que te protejas logrando un
+            buen equilibrio entre hidratación y exposición solar.
+          </p>
+        </article>
 
-      <article className="diagnostic-synthoms-article">
-        <h3>Síntomas de un golpe de calor</h3>
-        <ol>
-          {symthoms.map((symthom) => (
-            <li key={uuidv4()}>{symthom}</li>
-          ))}
-        </ol>
-        <p>
-          Si padeces alguno de los síntomas anteriores, acude al centro médico
-          más cercano lo antes posible para recibir el tratamiento necesario.
-        </p>
-      </article>
-    </section>
-    <NavBar />
+        <article className="diagnostic-synthoms-article">
+          <h3>Síntomas de un golpe de calor</h3>
+          <ol>
+            {symthoms.map((symthom) => (
+              <li key={uuidv4()}>{symthom}</li>
+            ))}
+          </ol>
+          <p>
+            Si padeces alguno de los síntomas anteriores, acude al centro médico
+            más cercano lo antes posible para recibir el tratamiento necesario.
+          </p>
+        </article>
+      </section>
+      <NavBar />
     </>
   );
 };
