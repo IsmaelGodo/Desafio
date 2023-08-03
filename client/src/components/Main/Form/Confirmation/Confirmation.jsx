@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Confirmation = ({ dataForm }) => {
-
+//Comprobacion de datos antes de enviar
   return (
     <article className="grid-container">
       <div>

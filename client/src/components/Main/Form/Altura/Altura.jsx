@@ -6,6 +6,7 @@ const Altura = ({
   handleButtonClickHeight,
   handleClearHeight,
 }) => {
+  //Teclado en pantalla
   return (
     <>
       <input
