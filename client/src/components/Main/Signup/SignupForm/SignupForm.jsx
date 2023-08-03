@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { UserLoggedContext } from "../../../../context/userLoggedContext";
+import axios from "axios";
 
 const SignupForm = () => {
-  
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [matchMessage, setMatchMessage] = useState(null);
+  const { updateUserLogged } = useContext(UserLoggedContext);
   const passRe = /^[\w\-.@]{8,16}$/;
 
   const {
@@ -16,7 +18,6 @@ const SignupForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data.username);
     const newUser = {
       username: data.username,
       email: data.email,
@@ -30,20 +31,23 @@ const SignupForm = () => {
 
     const handleLogin = async () => {
       try {
-        const res = await fetch(`/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newLogin),
-        });
-        const resData = await res.json();
-        console.log(resData);
+        // const res = await fetch(`/auth/login`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(newLogin),
+        // });
+        // const resData = await res.json();
+
+        const response = await axios.post("/auth/login", newLogin);
+        const resData = await response.data;
+
         setMessage(resData.message);
         const user = {
           user_id: resData.user_id,
           username: resData.username,
-          email: resData.email
-        }
-        updateUserLogged(user);
+          email: resData.email,
+        };
+        updateUserLogged();
       } catch (error) {
         console.log(error);
       }
@@ -51,13 +55,8 @@ const SignupForm = () => {
 
     const handleSignup = async () => {
       try {
-        const res = await fetch(`/api/users`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser),
-        });
-        const resData = await res.json();
-        console.log(resData);
+        const response = await axios.post(`/api/users`, newUser);
+        const resData = await response.data;
         setMessage(resData.message);
         handleLogin();
       } catch (error) {
@@ -69,14 +68,12 @@ const SignupForm = () => {
       handleSignup();
 
       setTimeout(() => {
-        navigate('/form');
+        navigate("/form");
       }, 500);
-
     } else {
       setMatchMessage("The second password doesn't match");
     }
   };
-  console.log(errors);
 
   return (
     <article className="login-form-article">
@@ -156,7 +153,7 @@ const SignupForm = () => {
         </p>
         {errors.repeat && <p>{errors.repeat.message}</p>}
 
-        <input type="submit" id="signup-button" value="Registro"/>
+        <input type="submit" id="signup-button" value="Registro" />
       </form>
       {message && <p className="error-message">{message}</p>}
       {matchMessage && <p className="error-message">{matchMessage}</p>}

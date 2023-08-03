@@ -8,7 +8,7 @@ import RightArrow2 from "../../../../assets/icons/Flecha-Derecha-Presionado.svg"
 import DisableArrow from "../../../../assets/icons/Flecha-Izquierda-Desactivado.svg";
 import ConfirmationButton from "../../../../assets/icons/Botón-Confirmación.svg";
 
-const FooterForm = ({ page, setPage, dataForm }) => {
+const FooterForm = ({ page, setPage, dataForm, setErrorMessage }) => {
   const navigate = useNavigate();
   const [log, setLog] = useState([]);
   const [Hovered, setHovered] = useState(false); //Boton1
@@ -37,26 +37,26 @@ const FooterForm = ({ page, setPage, dataForm }) => {
       const data = await response.data;
 
       setLog(data);
-      console.log("Buscando usuario");
-      console.log(log);
-      console.log("data en Fetchdata");
-      console.log(data);
 
       try {
         if (data.length > 0) {
           const response = await axios.put("/api/dataform", dataForm);
-          console.log("Respuesta del servidor:", response.data);
         } else {
           const response = await axios.post("/api/dataform", dataForm);
-          console.log("Respuesta del servidor:", response.data);
         }
         setTimeout(() => {
           navigate("/home");
         }, 500);
       } catch (error) {
+        setErrorMessage(
+          "Ha habido un error, inténtelo de nuevo pasado unos minutos"
+        );
         console.log("Error al enviar los datos:", error);
       }
     } catch (error) {
+      setErrorMessage(
+        "Ha habido un error, inténtelo de nuevo pasado unos minutos"
+      );
       console.log("Error:", error);
     }
   };

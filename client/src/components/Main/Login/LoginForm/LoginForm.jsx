@@ -8,6 +8,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const passRe = /^[\w\-.@]{8,16}$/;
+  const { updateUserLogged } = useContext(UserLoggedContext);
   // const [emailState, setEmailState] = useState("");
   // const [passwordState, setpasswordState] = useState("");
 
@@ -20,32 +21,21 @@ const LoginForm = () => {
   const onSubmit = (data) => {
     const handleLogin = async () => {
       try {
-        const res = await fetch(`/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-
-        const resData = await res.json();
-        console.log(resData.successful);
+        const response = await axios.post("/auth/login", data);
+        const resData = await response.data;
 
         if (resData.successful) {
           try {
-            console.log(resData.user_id)
-  
             const response = await axios.get(
               `/api/dataform?user_id=${resData.user_id}`
             );
             const data = await response.data;
+            updateUserLogged();
             setTimeout(() => {
               if (data.length > 0) {
-                setTimeout(() => {
-                  navigate('/perfil');
-                }, 500);
+                navigate("/perfil");
               } else {
-                setTimeout(() => {
-                  navigate('/form');
-                }, 500);
+                navigate("/form");
               }
             }, 500);
           } catch (error) {

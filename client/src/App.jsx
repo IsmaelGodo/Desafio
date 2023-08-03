@@ -6,23 +6,23 @@ import { useEffect, useState } from "react";
 
 function App() {
 
-  // const [userLogged, setUserLogged] = useState({});
+  const [userLogged, setUserLogged] = useState(false);
 
-  // const updateUserLogged = (user) => {
-  //   setUserLogged(user);
-  // };
+  const updateUserLogged = () => {
+    setUserLogged(true);
+  };
 
-  // const userLoggedData = {
-  //   userLogged,
-  //   updateUserLogged,
-  // };
+  const userLoggedData = {
+    userLogged,
+    updateUserLogged,
+  };
 
   return (
     <>
       <BrowserRouter>
-        {/* <UserLoggedContext.Provider value={userLoggedData}> */}
+        <UserLoggedContext.Provider value={userLoggedData}>
           <Main />
-        {/* </UserLoggedContext.Provider> */}
+        </UserLoggedContext.Provider>
       </BrowserRouter>
     </>
   );

@@ -12,14 +12,15 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 const Form = () => {
-  const [userLogged, setUserLogged] = useState(null);
+  const [userIdLogged, setUserIdLogged] = useState(null);
   const [username, setUserName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Getting user_id from cookie and
   useEffect(() => {
     const getUserIdAndUserName = async () => {
       const user_id = Cookies.get("user-logged");
-      setUserLogged(user_id);
+      setUserIdLogged(user_id);
 
       try {
         const response = await axios.get(
@@ -28,14 +29,15 @@ const Form = () => {
         const user = await response.data;
         setUserName(user[0].username);
       } catch (error) {
+        // setErrorMessage(
+        //   "Ha habido un error, inténtelo de nuevo pasado unos minutos"
+        // );
         console.log(error);
       }
     };
 
     getUserIdAndUserName();
   }, []);
-
-  // console.log(userLogged);
 
   //Logica de cambio de formulario
   const [page, setPage] = useState(0);
@@ -181,7 +183,7 @@ const Form = () => {
   };
   //Objeto Data
   const dataForm = {
-    user_id: userLogged,
+    user_id: userIdLogged,
     sex: genero,
     age: edad,
     height: displayedNumberHeight,
@@ -214,11 +216,14 @@ const Form = () => {
 
       <section className="body-form-section">{PageDisplay()}</section>
 
+      {/* {errorMessage && <h2>{errorMessage}</h2>} */}
+
       <FooterForm
         page={page}
         setPage={setPage}
         dataForm={dataForm}
-        userLogged={userLogged}
+        userLogged={userIdLogged}
+        setErrorMessage={setErrorMessage}
       />
     </>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import NavBar from "../Home/NavBar/NavBar";
 import Cookies from "js-cookie";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -26,12 +26,9 @@ const Perfil = () => {
           email: prof.email,
         }));
         setProfile(newProfile);
-        //console.log(user[0]);
         try {
           const response = await axios.get(
-            `/api/dataform?user_id=${parseInt(
-              user[0].user_id
-            )}`
+            `/api/dataform?user_id=${parseInt(user[0].user_id)}`
           );
           const data = await response.data;
           const newDignostic = data.map((diag, index) => ({
