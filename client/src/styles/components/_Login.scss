@@ -31,7 +31,7 @@
     font-size: 1.2rem;
     border: 2px solid $turquoise-blue;
     border-radius: 20px;
-    font-family: 'Verdana';
+    font-family: inherit;
 }
 .login-form > input:active {
     border-color:  $turquoise-blue;

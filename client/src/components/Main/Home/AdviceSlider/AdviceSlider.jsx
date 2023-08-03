@@ -35,7 +35,7 @@ function SamplePrevArrow(props) {
 }
 
 const AdviceSlider = () => {
-  var settings = {
+  const settings = {
     arrows: true,
     // dots: true,
     speed: 500,
