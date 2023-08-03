@@ -29,7 +29,7 @@ Installation:
     Semantic HTML5 markup
     Express
     Node.js
-
+[Texto alternativo](client/src/assets/screenshots/1.jpg)
   
 
     
