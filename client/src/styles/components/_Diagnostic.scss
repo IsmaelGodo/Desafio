@@ -3,12 +3,11 @@
 
 
 .diagnostic-section {
-    @include flex-column;
-    min-height: 100vh;
-    // justify-content: flex-start;
+    overflow: auto;
     line-height: 200%;
     text-align: left;
     color: $turquoise-blue;
+    padding-bottom: 4rem;
 }
 
 .diagnostic-header-article {
@@ -31,6 +30,11 @@
 
 .diagnostic-response-article, .diagnostic-synthoms-article {
     padding: 0 2rem;
+}
+
+.diagnostic-response-article span {
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .diagnostic-navbar-div {

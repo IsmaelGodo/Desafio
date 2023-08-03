@@ -15,7 +15,10 @@ const getUsers = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    throw error;
+    res.status(400).json({
+      message: "No se ha realizado correctamente la consulta",
+      error
+    });
   }
 };
 
@@ -24,15 +27,18 @@ const createUser = async (req, res) => {
   try {
     data = await users.createUser(req.body);
     res.status(201).json({
-      message: `User with username "${req.body.username}" created`
+      message: `User with username "${req.body.username}" created`,
     });
   } catch (error) {
     console.log(error);
-    throw error;
+    res.status(400).json({
+      message: "No se ha podido guardar el usuario",
+      error
+    });
   }
 };
 
 module.exports = {
   getUsers,
-  createUser
+  createUser,
 };

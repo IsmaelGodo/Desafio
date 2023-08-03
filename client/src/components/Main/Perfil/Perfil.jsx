@@ -74,78 +74,83 @@ const Perfil = () => {
 
   return (
     <>
-      <section className="header-perfil-section header_form-section-confirmation">
-        <div className="header-perfil-div">
-          <Link className="header-perfil-link" to={"/form"}>
-            Repetir formulario
-          </Link>
-          <a className="header-perfil-link" onClick={handleClick}>
-            Salir
-          </a>
-        </div>
-        <h1>
-          Bienvenido/a:{" "}
-          {profile.length > 0 ? profile[0].username : "Loading..."}
-        </h1>
-      </section>
+        <section className="header-perfil-section header_form-section-confirmation">
+          <div className="header-perfil-div">
+            <Link className="header-perfil-link" to={"/form"}>
+              Repetir formulario
+            </Link>
+            <a className="header-perfil-link" onClick={handleClick}>
+              Salir
+            </a>
+          </div>
+          <h1>
+            Bienvenido/a:{" "}
+            {profile.length > 0 ? profile[0].username : "Loading..."}
+          </h1>
+        </section>
 
-      <section className="body-form-section">
-        <div>
-          <article className="grid-container">
-            <div>
-              <h3>Sexo</h3>
-              <p>{diagData.length > 0 ? diagData[0].sex : "Loading..."}</p>
-            </div>
-            <div>
-              <h3>Edad</h3>
-              <p>{diagData.length > 0 ? diagData[0].age : "Loading..."} años</p>
-            </div>
-            <div>
-              <h3>Altura</h3>
+        <section className="body-form-section">
+          <div>
+            <article className="grid-container">
+              <div>
+                <h3>Sexo</h3>
+                <p>{diagData.length > 0 ? diagData[0].sex : "Loading..."}</p>
+              </div>
+              <div>
+                <h3>Edad</h3>
+                <p>
+                  {diagData.length > 0 ? diagData[0].age : "Loading..."} años
+                </p>
+              </div>
+              <div>
+                <h3>Altura</h3>
 
-              <p>
-                {diagData.length > 0 ? diagData[0].height : "Loading..."} cm
-              </p>
-            </div>
-            <div>
-              <h3>Peso</h3>
+                <p>
+                  {diagData.length > 0 ? diagData[0].height : "Loading..."} cm
+                </p>
+              </div>
+              <div>
+                <h3>Peso</h3>
 
-              <p>
-                {diagData.length > 0 ? diagData[0].weight : "Loading..."} kg
-              </p>
-            </div>
-            <div>
-              <h3>Hidratacion</h3>
+                <p>
+                  {diagData.length > 0 ? diagData[0].weight : "Loading..."} kg
+                </p>
+              </div>
+              <div>
+                <h3>Hidratacion</h3>
 
-              <p>
-                {diagData.length > 0 ? diagData[0].water_gl : "Loading..."}{" "}
-                vasos
-              </p>
-            </div>
-            <div>
-              <h3>Actividad</h3>
+                <p>
+                  {diagData.length > 0 ? diagData[0].water_gl : "Loading..."}{" "}
+                  vasos
+                </p>
+              </div>
+              <div>
+                <h3>Actividad</h3>
 
-              <p>{diagData.length > 0 ? diagData[0].activity : "Loading..."}</p>
-            </div>
-            <div>
-              <h3>Enfermedad</h3>
+                <p>
+                  {diagData.length > 0 ? diagData[0].activity : "Loading..."}
+                </p>
+              </div>
+              <div>
+                <h3>Enfermedad</h3>
 
-              {diagData.length > 0 && diagData[0].cardio_dis !== false && (
-                <p>{`Cardiopatía`}</p>
-              )}
-              {diagData.length > 0 && diagData[0].digest_dis !== false && (
-                <p>{`Digestiva`}</p>
-              )}
-              {diagData.length > 0 && diagData[0].neuro_dis !== false && (
-                <p>{`Neuronal`}</p>
-              )}
-              {diagData.length > 0 && diagData[0].lung_dis !== false && (
-                <p>{`Pulmonar`}</p>
-              )}
-            </div>
-          </article>
-        </div>
-      </section>
+                {diagData.length > 0 && diagData[0].cardio_dis !== false && (
+                  <p>{`Cardiopatía`}</p>
+                )}
+                {diagData.length > 0 && diagData[0].digest_dis !== false && (
+                  <p>{`Digestiva`}</p>
+                )}
+                {diagData.length > 0 && diagData[0].neuro_dis !== false && (
+                  <p>{`Neuronal`}</p>
+                )}
+                {diagData.length > 0 && diagData[0].lung_dis !== false && (
+                  <p>{`Pulmonar`}</p>
+                )}
+              </div>
+            </article>
+          </div>
+        </section>
+
       <NavBar />
     </>
   );

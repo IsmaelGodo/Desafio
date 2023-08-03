@@ -56,10 +56,6 @@ const checkUser = async (req, res, next) => {
 
 const checkToken = async (req, res, next) => {
   const token = req.cookies["access-token"];
-
-  console.log("Taking token from cookie");
-  console.log(token);
-
   if (token) {
     jwt.verify(token, tokenSecret, (error, user) => {
       if (error) {
@@ -73,9 +69,6 @@ const checkToken = async (req, res, next) => {
       }
     });
   } else {
-    // res.sendStatus(401).json({
-    //   message: "Token not provided",
-    // });
     console.log("Token not provided");
   }
 };

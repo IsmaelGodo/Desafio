@@ -1,6 +1,10 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
+.profile-container {
+    height: 100vh;
+}
+
 .header-perfil-section {
     @include flex-column;
     height: 250px;
@@ -19,4 +23,5 @@
     cursor: pointer;
     color: $dark-orange;
 }
+
 

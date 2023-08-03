@@ -158,7 +158,7 @@ const Diagnostic = () => {
         </article>
 
         <article className="diagnostic-response-article">
-          <p>Querido/a {userData.username},</p>
+          <p>Querido/a <span>{userData.username}</span>,</p>
           <p>
             En base a tus datos, hemos calculado que tu imc {imcResultado} situa
             tu peso en {categoria}.
